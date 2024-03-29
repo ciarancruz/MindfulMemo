@@ -4,6 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fitness">
+    android:background="@color/peach_beige"
+    tools:context=".categoryscreens.Fitness">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="451dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <ImageView
+            android:layout_width="154dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-12dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="309dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/backbtn"
+            android:contentDescription="@string/back_btn" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/fitness_text"
+        android:layout_width="148dp"
+        android:layout_height="60dp"
+        android:text="@string/fitness"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07"
+        tools:ignore="TextSizeCheck" />
+
+    <ImageView
+        android:layout_width="182dp"
+        android:layout_height="120dp"
+        android:src="@drawable/icon_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124"
+        tools:ignore="ContentDescription,MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

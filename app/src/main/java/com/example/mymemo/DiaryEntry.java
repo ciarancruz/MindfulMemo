@@ -6,6 +6,9 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.Insert;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import java.util.Date;
 
 @Entity(
         tableName = "DiaryEntry",
@@ -24,8 +27,9 @@ public class DiaryEntry {
     @NonNull
     int entry_id;
 
-//    @NonNull
-//    String date;
+    @NonNull
+    @TypeConverters(DateConverter.class)
+    Long date;
 
     @NonNull
     String title;
@@ -48,8 +52,9 @@ public class DiaryEntry {
     @NonNull
     int user_id;
 
-    public DiaryEntry(int entry_id, @NonNull String title, @NonNull String text_content, @NonNull String entry_password, @NonNull String video, double lon, double lat) {
+    public DiaryEntry(int entry_id,@NonNull Long date, @NonNull String title, @NonNull String text_content, @NonNull String entry_password, @NonNull String video, double lon, double lat) {
         this.entry_id = entry_id;
+        this.date = date;
         this.title = title;
         this.text_content = text_content;
         this.entry_password = entry_password;

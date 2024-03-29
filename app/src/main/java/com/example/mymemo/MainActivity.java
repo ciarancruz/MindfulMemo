@@ -43,6 +43,5 @@ public class MainActivity extends AppCompatActivity {
     public void register(){
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
-
     }
 }

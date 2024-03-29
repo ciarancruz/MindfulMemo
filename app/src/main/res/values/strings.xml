@@ -17,4 +17,14 @@
     <string name="family">Family</string>
     <string name="hobbies">Hobbies</string>
     <string name="mood">Mood</string>
+    <string name="view">View</string>
+    <string name="meetingicon">MeetingIcon</string>
+    <string name="study_icon">study_icon</string>
+    <string name="family_icon">family_icon</string>
+    <string name="hobbie_icon">hobbie_icon</string>
+    <string name="mood_icon">mood_icon</string>
+    <string name="back_btn">back_btn</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
 </resources>

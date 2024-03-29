@@ -6,6 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.Date;
+import java.util.List;
+
 @Dao
 public interface DiaryEntryDao {
     @Insert
@@ -19,4 +22,7 @@ public interface DiaryEntryDao {
 
     @Query("Select * from DiaryEntry where entry_id = :entry_id")
     DiaryEntry getEntryById(int entry_id);
+
+    @Query("Select entry_id from DiaryEntry where date = :date")
+    List<Integer> getEntryByDate(Long date);
 }
