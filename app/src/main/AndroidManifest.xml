@@ -18,6 +18,10 @@
         <activity
             android:name=".categoryscreens.Family"
             android:exported="false" />
+
+        <activity
+            android:name="Calendar"
+            android:exported="false" />
         <activity
             android:name=".categoryscreens.Study"
             android:exported="false" />
