@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.util.Locale;
 
 import com.example.mymemo.categoryscreens.CategoryActivity;
 
@@ -26,6 +27,19 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
+    //when user clicks on register link it should lead to register page.
+    public void navigatetoRegister(View view) {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
+    }
+
+    // when user clicks on back button it leads them to the main page
+    public void navigatetoMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
         initializeViews();
 
@@ -76,6 +90,7 @@ public class Login extends AppCompatActivity {
             }
         });
         thread.start();
+
 
     }
 

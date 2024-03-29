@@ -2,8 +2,6 @@ package com.example.mymemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.AsyncTaskLoader;
-
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,7 +28,7 @@ public class Register extends AppCompatActivity {
 
     private EditText editTextFirstName;
     private EditText editTextLastName;
-    private EditText editTextUsername;
+    private EditText editTextEmail;
     private EditText editTextPassword;
     private EditText editTextConfirmPassword;
 
@@ -43,7 +41,7 @@ public class Register extends AppCompatActivity {
 
         editTextFirstName = findViewById(R.id.editTextFirstName);
         editTextLastName = findViewById(R.id.editTextLastName);
-        editTextUsername = findViewById(R.id.editTextEmail);
+        editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         buttonRegister = findViewById(R.id.buttonRegister);
@@ -71,12 +69,12 @@ public class Register extends AppCompatActivity {
     private void registerUser() {
         String firstName = editTextFirstName.getText().toString().trim();
         String lastName = editTextLastName.getText().toString().trim();
-        String username = editTextUsername.getText().toString().trim();
+        String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String confirmPassword = editTextConfirmPassword.getText().toString().trim();
 
         //validation
-        if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -109,30 +107,10 @@ public class Register extends AppCompatActivity {
             return null;
         }
     }
-
-//    public void testLogin() {
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (AppDatabase.getInstance(getApplicationContext())
-//                        .userDao()
-//                        .getUserById(3) != null) {
-//                    User user = AppDatabase.getInstance(getApplicationContext())
-//                            .userDao()
-//                            .getUserById(3);
-//                    Log.d(TAG, "run: " + user.f_name.toString());
-//                }
-//                else {
-//                    Log.d(TAG, "run: Could not find user!");
-//                }
-//            }
-//        });
-//        thread.start();
-//    }
-
-
-
-
-
+    //when user clicks on the back button it leads them back to the main page.
+    public void navigatetoMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
 }
