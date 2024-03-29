@@ -20,18 +20,18 @@ public class User {
     @NonNull
     String l_name;
 
-    @ColumnInfo(name = "username")
+    @ColumnInfo(name = "email")
     @NonNull
-    String username;
+    String email;
 
     @ColumnInfo(name = "password")
     @NonNull
     String user_password;
 
-    public User(@NonNull String f_name, @NonNull String l_name, @NonNull String username, @NonNull String user_password) {
+    public User(@NonNull String f_name, @NonNull String l_name, @NonNull String email, @NonNull String user_password) {
         this.f_name = f_name;
         this.l_name = l_name;
-        this.username = username;
+        this.email = email;
         this.user_password = user_password;
     }
 
@@ -62,12 +62,12 @@ public class User {
     }
 
     @NonNull
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(@NonNull String username) {
-        this.username = username;
+    public void setEmail(@NonNull String email) {
+        this.email = email;
     }
 
     @NonNull

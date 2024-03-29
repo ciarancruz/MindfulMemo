@@ -49,19 +49,19 @@ public class Register extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonRegister);
 
         // Button to navigate to the calendar page
-        Button buttonGoToCalendar = findViewById(R.id.buttonGoToCalendar);
-        buttonGoToCalendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the calendar activity
-                startActivity(new Intent(Register.this, Calendar.class));
-            }
-        });
+//        Button buttonGoToCalendar = findViewById(R.id.buttonGoToCalendar);
+//        buttonGoToCalendar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Start the calendar activity
+//                startActivity(new Intent(Register.this, Calendar.class));
+//            }
+//        });
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testLogin();
+                registerUser();
             }
         });
     }
@@ -88,13 +88,14 @@ public class Register extends AppCompatActivity {
 
         User user = new User(firstName, lastName, username, password);
 
-        // Optionally, you can save the user details to a database or file
+        // Insert user into database
         InsertAsyncUser insertAsyncUser = new InsertAsyncUser();
         insertAsyncUser.execute(user);
 
         // Registration successful
         Toast.makeText(this, "Registered user: " + username, Toast.LENGTH_SHORT).show();
-        getUser();
+//        testLogin();
+        finish();
     }
 
     class InsertAsyncUser extends AsyncTask<User, Void, Void> {
@@ -109,34 +110,25 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    // Get User List
-    public void getUser() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<User> userList = AppDatabase.getInstance(getApplicationContext())
-                        .userDao()
-                        .getAllUsers();
-                Log.d(TAG, "run: " + userList.toString());
-
-            }
-        });
-        thread.start();
-    }
-
-    public void testLogin() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                User user = AppDatabase.getInstance(getApplicationContext())
-                        .userDao()
-                        .getUserById(1);
-                Log.d(TAG, "run: " + user.f_name.toString());
-
-            }
-        });
-        thread.start();
-    }
+//    public void testLogin() {
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (AppDatabase.getInstance(getApplicationContext())
+//                        .userDao()
+//                        .getUserById(3) != null) {
+//                    User user = AppDatabase.getInstance(getApplicationContext())
+//                            .userDao()
+//                            .getUserById(3);
+//                    Log.d(TAG, "run: " + user.f_name.toString());
+//                }
+//                else {
+//                    Log.d(TAG, "run: Could not find user!");
+//                }
+//            }
+//        });
+//        thread.start();
+//    }
 
 
 
