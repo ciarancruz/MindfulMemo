@@ -1,4 +1,4 @@
-package com.example.mymemo.categoryscreens;
+package com.example.mymemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
