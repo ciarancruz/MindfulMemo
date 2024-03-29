@@ -22,32 +22,32 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-
-        Button galleryBtn = findViewById(R.id.gallery_btn);
-        Button viewBtn = findViewById(R.id.view_btn);
-
-
-
-
-        galleryBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, GalleryActivity.class);
-            startActivity(intent);
-        });
-
-        viewBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, Meetings.class);
-            startActivity(intent);
-        });
+//
+//        Button galleryBtn = findViewById(R.id.gallery_btn);
+//        Button viewBtn = findViewById(R.id.view_btn);
+//
+//
+//
+//
+//        galleryBtn.setOnClickListener(v -> {
+//            Intent intent = new Intent(CategoryActivity.this, GalleryActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        viewBtn.setOnClickListener(v -> {
+//            Intent intent = new Intent(CategoryActivity.this, Meetings.class);
+//            startActivity(intent);
+//        });
 
 
 
 
     }
 
-    public void navigatetoDiary(View view) {
-        Intent intent = new Intent(this, MyDiaryMain.class);
-        startActivity(intent);
-    }
+//    public void navigatetoDiary(View view) {
+//        Intent intent = new Intent(this, MyDiaryMain.class);
+//        startActivity(intent);
+//    }
 
 
 }
