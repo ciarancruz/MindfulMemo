@@ -84,14 +84,14 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        User user = new User(firstName, lastName, username, password);
+        User user = new User(firstName, lastName, email, password);
 
         // Insert user into database
         InsertAsyncUser insertAsyncUser = new InsertAsyncUser();
         insertAsyncUser.execute(user);
 
         // Registration successful
-        Toast.makeText(this, "Registered user: " + username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registered user: " + email, Toast.LENGTH_SHORT).show();
 //        testLogin();
         finish();
     }

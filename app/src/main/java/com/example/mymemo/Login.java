@@ -29,19 +29,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
-    //when user clicks on register link it should lead to register page.
-    public void navigatetoRegister(View view) {
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
-    }
-
-    // when user clicks on back button it leads them to the main page
-    public void navigatetoMain(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
-        initializeViews();
+        buttonLogin = findViewById(R.id.Loginbutton);
 
         // Login button
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +39,25 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        initializeViews();
     }
 
+
+//    //when user clicks on register link it should lead to register page.
+//    public void navigatetoRegister() {
+//        Intent intent = new Intent(this, Register.class);
+//        startActivity(intent);
+//    }
+//
+//    // when user clicks on back button it leads them to the main page
+//    public void navigatetoMain(){
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+//    }
+
     private void initializeViews() {
-        editTextEmail = findViewById(R.id.EmailAddress);
-        editTextPassword = findViewById(R.id.Password);
+        editTextEmail = findViewById(R.id.EmailAddressText);
+        editTextPassword = findViewById(R.id.PasswordText);
         buttonLogin = findViewById(R.id.Loginbutton);
     }
 
