@@ -7,7 +7,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import com.example.mymemo.DiaryActivity;
 import com.example.mymemo.GalleryActivity;
+
+import android.view.View;
+
+import com.example.mymemo.MainActivity;
+
 import com.example.mymemo.R;
+import com.example.mymemo.diaryscreens.MyDiaryMain;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -16,17 +22,12 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        Button addBtn = findViewById(R.id.add_btn);
+
         Button galleryBtn = findViewById(R.id.gallery_btn);
         Button viewBtn = findViewById(R.id.view_btn);
-        Button viewBtn2 = findViewById(R.id.view_btn_2);
 
 
-        addBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, DiaryActivity.class);
-            startActivity(intent);
 
-        });
 
         galleryBtn.setOnClickListener(v -> {
             Intent intent = new Intent(CategoryActivity.this, GalleryActivity.class);
@@ -38,12 +39,15 @@ public class CategoryActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewBtn2.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, Fitness.class);
-            startActivity(intent);
-        });
+
 
 
     }
+
+    public void navigatetoDiary(View view) {
+        Intent intent = new Intent(this, MyDiaryMain.class);
+        startActivity(intent);
+    }
+
 
 }

@@ -44,6 +44,7 @@
         android:id="@+id/plusadd"
         android:layout_width="88dp"
         android:layout_height="97dp"
+        android:onClick="navigatetoMood"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.985"
@@ -56,6 +57,7 @@
         android:id="@+id/backhome"
         android:layout_width="97dp"
         android:layout_height="97dp"
+        android:onClick="navigatetoCategory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.017"
@@ -65,9 +67,9 @@
         app:srcCompat="@drawable/backbut" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/diaryimage"
         android:layout_width="134dp"
-        android:layout_height="96dp"
+        android:layout_height="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
@@ -75,5 +77,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.032"
         app:srcCompat="@drawable/diaryicon" />
+
+    <TextView
+        android:id="@+id/placeholdertext"
+        android:layout_width="248dp"
+        android:layout_height="57dp"
+        android:text="No Entries Created."
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
