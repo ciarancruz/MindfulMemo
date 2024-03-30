@@ -51,7 +51,11 @@
             android:exported="false"
             />
         <activity
-            android:name=".GalleryActivity"
+            android:name=".diaryscreens.MyDiaryMain"
+            android:exported="false"/>
+
+        <activity
+            android:name=".galleryscreens.GalleryActivity"
             android:exported="false"
             />
 

@@ -5,49 +5,59 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import com.example.mymemo.DiaryActivity;
-import com.example.mymemo.GalleryActivity;
-
 import android.view.View;
-
-import com.example.mymemo.MainActivity;
+import android.widget.ImageView;
 
 import com.example.mymemo.R;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
+import com.example.mymemo.galleryscreens.GalleryActivity;
 
 public class CategoryActivity extends AppCompatActivity {
+
+    private Button galleryButton;
+    private ImageView addImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-//
-//        Button galleryBtn = findViewById(R.id.gallery_btn);
-//        Button viewBtn = findViewById(R.id.view_btn);
-//
-//
-//
-//
-//        galleryBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(CategoryActivity.this, GalleryActivity.class);
-//            startActivity(intent);
-//        });
-//
-//        viewBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(CategoryActivity.this, Meetings.class);
-//            startActivity(intent);
-//        });
+
+        galleryButton = findViewById(R.id.gallery_btn);
+        addImageView = findViewById(R.id.add);
 
 
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gallery();
+            }
+        });
+
+        addImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigatetoDiary();
+            }
+        });
 
 
     }
 
-//    public void navigatetoDiary(View view) {
-//        Intent intent = new Intent(this, MyDiaryMain.class);
-//        startActivity(intent);
-//    }
+    public void gallery(){
+        Intent intent = new Intent(this, GalleryActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigatetoDiary(){
+        Intent intent = new Intent(this, MyDiaryMain.class);
+        startActivity(intent);
+
+    }
+
+
+
+
 
 
 }
