@@ -158,6 +158,7 @@
             android:layout_marginEnd="-9dp"
             android:layout_marginBottom="-14dp"
             android:background="#00000000"
+            android:onClick="navMeeting"
             android:text="@string/view"
             android:textSize="10sp"
             tools:ignore="SmallSp" />
@@ -206,6 +207,7 @@
             android:src="@drawable/icon_2" />
 
         <Button
+            android:id="@+id/view_Fitness"
             android:layout_width="65dp"
             android:layout_height="52dp"
             android:layout_alignParentStart="true"
@@ -218,6 +220,7 @@
             android:layout_marginBottom="-14dp"
             android:background="#00000000"
             android:text="@string/view"
+            android:onClick="navFitness"
             android:textSize="10sp"
             tools:ignore="SmallSp" />
     </RelativeLayout>
@@ -266,7 +269,8 @@
             android:src="@drawable/icon_4" />
 
         <Button
-
+            android:id="@+id/view_Study"
+            android:onClick="nav_Study"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -328,6 +332,8 @@
             android:src="@drawable/icon_3" />
 
         <Button
+            android:id="@+id/view_Family"
+            android:onClick="navFamily"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -387,6 +393,8 @@
             android:src="@drawable/icon_5" />
 
         <Button
+            android:id="@+id/view_Hobbies"
+            android:onClick="navHobbies"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -433,6 +441,8 @@
         tools:ignore="MissingConstraints">
 
         <Button
+            android:id="@+id/view_Mood"
+            android:onClick="navMood"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"

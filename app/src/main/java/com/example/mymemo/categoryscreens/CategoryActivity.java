@@ -16,6 +16,17 @@ public class CategoryActivity extends AppCompatActivity {
 
     private Button galleryButton;
     private ImageView addImageView;
+    private Button viewButton;
+
+    private Button viewFitnessBtn;
+
+    private Button viewStudyBtn;
+
+    private Button viewFamilyBtn;
+
+    private Button viewHobbiesBtn;
+
+    private Button viewMoodBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +36,12 @@ public class CategoryActivity extends AppCompatActivity {
 
         galleryButton = findViewById(R.id.gallery_btn);
         addImageView = findViewById(R.id.add);
+        viewButton = findViewById(R.id.view_btn);
+        viewFitnessBtn = findViewById(R.id.view_Fitness);
+        viewStudyBtn = findViewById(R.id.view_Study);
+        viewFamilyBtn = findViewById(R.id.view_Family);
+        viewHobbiesBtn = findViewById(R.id.view_Hobbies);
+        viewMoodBtn = findViewById(R.id.view_Mood);
 
 
         galleryButton.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +58,50 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
+        viewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewMeeting();
+            }
+        });
+
+        viewFitnessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewFitnessBtn();
+            }
+        });
+
+        viewStudyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewStudyBtn();
+            }
+        });
+
+        viewFamilyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navFamily();
+            }
+        });
+
+        viewHobbiesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navHobbie();
+            }
+        });
+
+        viewMoodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navMood();
+            }
+        });
+
+
+
 
     }
 
@@ -54,6 +115,37 @@ public class CategoryActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void viewMeeting(){
+        Intent intent = new Intent(this, Meetings.class);
+        startActivity(intent);
+    }
+
+    public void viewFitnessBtn(){
+        Intent intent = new Intent(this, Fitness.class);
+        startActivity(intent);
+    }
+
+    public void viewStudyBtn(){
+        Intent intent = new Intent(this, Study.class);
+        startActivity(intent);
+    }
+
+    public void navFamily(){
+        Intent intent = new Intent(this, Family.class);
+        startActivity(intent);
+    }
+
+    public void navHobbie(){
+        Intent intent = new Intent(this, Hobbies.class);
+        startActivity(intent);
+    }
+
+    public void navMood(){
+        Intent intent = new Intent(this, Moods.class);
+        startActivity(intent);
+    }
+
 
 
 
