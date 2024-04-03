@@ -28,41 +28,10 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-<!-- <!--         android:id="@+id/imageView"
-        android:layout_width="374dp"
-        android:layout_height="1129dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-5dp"
-        android:layout_marginTop="-336dp"
-        android:layout_marginEnd="-35dp"
-        android:layout_marginBottom="-59dp"
-        android:src="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/greetingText"
-        android:layout_width="245dp"
-        android:layout_height="68dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="355dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="308dp" --> -->
-
-      
         android:text="@string/welcome"
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
-      
-      
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,23 +41,6 @@
     <TextView
         android:layout_width="291dp"
         android:layout_height="100dp"
-              
-<!-- <!--         tools:ignore="TextSizeCheck"/>
-
-    <TextView
-        android:id="@+id/descriptionText"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="483dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="141dp" --> -->
-
-      
         android:fontFamily="@font/grape_nut_font"
         android:text="@string/this_is_your_life_your_diary_start_journaling_today_and_capture_all_the_little_moment_in_your_life"
         android:textColor="@color/black"
@@ -103,10 +55,6 @@
 
     <Button
         android:id="@+id/login"
-            
-            
-            
-
         android:layout_width="135dp"
         android:layout_height="51dp"
         android:background="@drawable/btn_bg"
@@ -132,29 +80,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.82" />
-
-<!--         android:layout_width="114dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_bg"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="61dp"
-        android:layout_marginBottom="245dp"
-        android:textColor="#000000"
-        android:text="@string/login" />
-
-    <Button
-        android:id="@+id/register"
-        android:layout_width="133dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_bg"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="246dp"
-        android:layout_toEndOf="@+id/login"
-        android:textColor="#000000"
-        android:text="@string/register" /> -->
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
