@@ -43,11 +43,12 @@ public class Login extends AppCompatActivity {
     }
 
 
-//    //when user clicks on register link it should lead to register page.
-//    public void navigatetoRegister() {
-//        Intent intent = new Intent(this, Register.class);
-//        startActivity(intent);
-//    }
+    //when user clicks on register link it should lead to register page.
+    public void navigatetoRegister(View view) {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
+        finish();
+    }
 //
 //    // when user clicks on back button it leads them to the main page
 //    public void navigatetoMain(){
@@ -72,6 +73,7 @@ public class Login extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 // If there is a match in the database
                 if (AppDatabase.getInstance(getApplicationContext())
                         .userDao()
@@ -80,14 +82,28 @@ public class Login extends AppCompatActivity {
                             .userDao()
                             .getUserByEmail(email);
                     Log.d(TAG, "run: " + user.getF_name());
+
+                    // Check if password matches account
                     if (password.equalsIgnoreCase(user.getUser_password())) {
                         Intent intent = new Intent(Login.this, CategoryActivity.class);
                         startActivity(intent);
                         finish();
                     }
+                    else {
+                        Login.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(Login.this, "Incorrect Password", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
                 }
                 else {
-                    Log.d(TAG, "run: Could not find user!");
+                    Login.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(Login.this, "Could not find user", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         });
