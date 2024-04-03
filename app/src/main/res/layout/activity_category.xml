@@ -8,77 +8,86 @@
     android:background="@color/peach_beige">
 
 
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
-        android:id="@+id/Login"
-        android:layout_width="92dp"
-        android:layout_height="49dp"
-        android:text="@string/hello"
-        android:textAlignment="center"
+        android:id="@+id/textView2"
+        android:layout_width="377dp"
+        android:layout_height="183dp"
+        android:background="@drawable/box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127" />
+
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="49dp"
+        android:layout_height="42dp"
+        android:onClick="navigatetoDiary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.283"
+        app:srcCompat="@drawable/whiteadd3"
+        android:contentDescription="@string/add_btn" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="132dp"
+        android:layout_height="156dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086"
+        app:srcCompat="@drawable/image1"
+        android:contentDescription="@string/imageview3" />
+
+    <TextView
+        android:id="@+id/my_diary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_diary"
         android:textColor="#000000"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
+
+    <Button
+        android:id="@+id/category_btn"
+        android:layout_width="169dp"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_bg"
+        android:text="@string/category"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        tools:ignore="TextSizeCheck" />
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="379dp"
-        android:layout_height="198dp"
-        android:background="@drawable/box"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.259"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
-
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="132dp"
-        android:layout_height="156dp"
-        android:src="@drawable/image1"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104"
-        tools:ignore="ContentDescription,ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_diary"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
-
-
-
-    <Button
-        android:layout_width="169dp"
-        android:layout_height="48dp"
-        android:background="@drawable/btn_bg"
-        android:text="@string/category"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintVertical_bias="0.417" />
 
     <Button
         android:id="@+id/gallery_btn"
@@ -86,41 +95,41 @@
         android:layout_height="48dp"
         android:background="@drawable/btn_bg_2"
         android:text="@string/gallery"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/meetings"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.417" />
+
+
+    <TextView
+        android:id="@+id/meeting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/meetings"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485" />
+
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="180dp"
-        android:layout_height="70dp"
+        android:layout_width="169dp"
+        android:layout_height="72dp"
         android:background="@drawable/btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529">
+        app:layout_constraintVertical_bias="0.559">
 
         <ImageView
             android:layout_width="132dp"
@@ -149,39 +158,38 @@
             android:layout_marginEnd="-9dp"
             android:layout_marginBottom="-14dp"
             android:background="#00000000"
+            android:onClick="navMeeting"
             android:text="@string/view"
-            android:textSize="6sp"
+            android:textSize="10sp"
             tools:ignore="SmallSp" />
 
     </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:id="@+id/fitness_text"
+        android:layout_width="63dp"
+        android:layout_height="26dp"
         android:text="@string/fitness"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintHorizontal_bias="0.643"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.486" />
 
     <RelativeLayout
-        android:layout_width="178dp"
-        android:layout_height="67dp"
-        android:layout_margin="20dp"
+        android:layout_width="169dp"
+        android:layout_height="72dp"
         android:background="@drawable/btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531"
+        app:layout_constraintVertical_bias="0.559"
         tools:ignore="MissingConstraints,UselessLeaf">
 
         <ImageView
@@ -199,6 +207,7 @@
             android:src="@drawable/icon_2" />
 
         <Button
+            android:id="@+id/view_Fitness"
             android:layout_width="65dp"
             android:layout_height="52dp"
             android:layout_alignParentStart="true"
@@ -211,17 +220,29 @@
             android:layout_marginBottom="-14dp"
             android:background="#00000000"
             android:text="@string/view"
-            android:textSize="6sp"
+            android:onClick="navFitness"
+            android:textSize="10sp"
             tools:ignore="SmallSp" />
-
-
-
-
-
     </RelativeLayout>
 
+
+    <TextView
+        android:id="@+id/study_text"
+        android:layout_width="66dp"
+        android:layout_height="28dp"
+        android:text="@string/study"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.641" />
+
     <RelativeLayout
-        android:layout_width="175dp"
+        android:layout_width="169dp"
         android:layout_height="72dp"
         android:layout_margin="20dp"
         android:background="@drawable/btn_bg"
@@ -230,7 +251,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694"
+        app:layout_constraintVertical_bias="0.749"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -248,7 +269,8 @@
             android:src="@drawable/icon_4" />
 
         <Button
-
+            android:id="@+id/view_Study"
+            android:onClick="nav_Study"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -261,13 +283,29 @@
             android:layout_marginBottom="-9dp"
             android:background="#00000000"
             android:text="@string/view"
-            android:textSize="6sp"
+            android:textSize="10sp"
             tools:ignore="SmallSp" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/family_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/family"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.637" />
+
+
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="167dp"
+        android:layout_width="169dp"
         android:layout_height="72dp"
         android:layout_margin="20dp"
         android:background="@drawable/btn_bg"
@@ -276,7 +314,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695"
+        app:layout_constraintVertical_bias="0.746"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -294,6 +332,8 @@
             android:src="@drawable/icon_3" />
 
         <Button
+            android:id="@+id/view_Family"
+            android:onClick="navFamily"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -306,38 +346,36 @@
             android:layout_marginBottom="-9dp"
             android:background="#00000000"
             android:text="@string/view"
-            android:textSize="6sp"
+            android:textSize="10sp"
             tools:ignore="SmallSp" />
     </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:id="@+id/hobbies_text"
+        android:layout_width="90dp"
+        android:layout_height="28dp"
         android:text="@string/hobbies"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.802" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
-        android:layout_width="165dp"
-        android:layout_height="80dp"
-        android:layout_margin="20dp"
+        android:layout_width="169dp"
+        android:layout_height="72dp"
         android:background="@drawable/btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87"
+        app:layout_constraintVertical_bias="0.898"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -355,6 +393,8 @@
             android:src="@drawable/icon_5" />
 
         <Button
+            android:id="@+id/view_Hobbies"
+            android:onClick="navHobbies"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -367,41 +407,42 @@
             android:layout_marginBottom="-9dp"
             android:background="#00000000"
             android:text="@string/view"
-            android:textSize="6sp"
+            android:textSize="10sp"
             tools:ignore="SmallSp" />
     </RelativeLayout>
 
+
     <TextView
+        android:id="@+id/mood_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:text="@string/mood"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.797" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout5"
-        android:layout_width="177dp"
-        android:layout_height="80dp"
-        android:layout_margin="20dp"
+        android:layout_width="169dp"
+        android:layout_height="72dp"
         android:background="@drawable/btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87"
+        app:layout_constraintVertical_bias="0.898"
         tools:ignore="MissingConstraints">
 
         <Button
+            android:id="@+id/view_Mood"
+            android:onClick="navMood"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -414,7 +455,7 @@
             android:layout_marginBottom="-9dp"
             android:background="#00000000"
             android:text="@string/view"
-            android:textSize="6sp"
+            android:textSize="10sp"
             tools:ignore="SmallSp" />
 
         <ImageView
@@ -445,39 +486,8 @@
         app:layout_constraintVertical_bias="0.994"
         app:menu="@menu/bottom_nav_menu" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/study"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602"
-        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/family"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/bottomNavView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.655"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605"
-        tools:ignore="MissingConstraints" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,17 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import com.example.mymemo.DiaryActivity;
-import com.example.mymemo.GalleryActivity;
-
 import android.view.View;
-
-import com.example.mymemo.MainActivity;
+import android.widget.ImageView;
 
 import com.example.mymemo.R;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
+import com.example.mymemo.galleryscreens.GalleryActivity;
 
 public class CategoryActivity extends AppCompatActivity {
+
+    private Button galleryButton;
+    private ImageView addImageView;
+    private Button viewButton;
+
+    private Button viewFitnessBtn;
+
+    private Button viewStudyBtn;
+
+    private Button viewFamilyBtn;
+
+    private Button viewHobbiesBtn;
+
+    private Button viewMoodBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +34,70 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
 
-        Button galleryBtn = findViewById(R.id.gallery_btn);
-        Button viewBtn = findViewById(R.id.view_btn);
+        galleryButton = findViewById(R.id.gallery_btn);
+        addImageView = findViewById(R.id.add);
+        viewButton = findViewById(R.id.view_btn);
+        viewFitnessBtn = findViewById(R.id.view_Fitness);
+        viewStudyBtn = findViewById(R.id.view_Study);
+        viewFamilyBtn = findViewById(R.id.view_Family);
+        viewHobbiesBtn = findViewById(R.id.view_Hobbies);
+        viewMoodBtn = findViewById(R.id.view_Mood);
 
 
-
-
-        galleryBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, GalleryActivity.class);
-            startActivity(intent);
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gallery();
+            }
         });
 
-        viewBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoryActivity.this, Meetings.class);
-            startActivity(intent);
+        addImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigatetoDiary();
+            }
+        });
+
+        viewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewMeeting();
+            }
+        });
+
+        viewFitnessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewFitnessBtn();
+            }
+        });
+
+        viewStudyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewStudyBtn();
+            }
+        });
+
+        viewFamilyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navFamily();
+            }
+        });
+
+        viewHobbiesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navHobbie();
+            }
+        });
+
+        viewMoodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navMood();
+            }
         });
 
 
@@ -44,10 +105,51 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
 
-    public void navigatetoDiary(View view) {
-        Intent intent = new Intent(this, MyDiaryMain.class);
+    public void gallery(){
+        Intent intent = new Intent(this, GalleryActivity.class);
         startActivity(intent);
     }
+
+    public void navigatetoDiary(){
+        Intent intent = new Intent(this, MyDiaryMain.class);
+        startActivity(intent);
+
+    }
+
+    public void viewMeeting(){
+        Intent intent = new Intent(this, Meetings.class);
+        startActivity(intent);
+    }
+
+    public void viewFitnessBtn(){
+        Intent intent = new Intent(this, Fitness.class);
+        startActivity(intent);
+    }
+
+    public void viewStudyBtn(){
+        Intent intent = new Intent(this, Study.class);
+        startActivity(intent);
+    }
+
+    public void navFamily(){
+        Intent intent = new Intent(this, Family.class);
+        startActivity(intent);
+    }
+
+    public void navHobbie(){
+        Intent intent = new Intent(this, Hobbies.class);
+        startActivity(intent);
+    }
+
+    public void navMood(){
+        Intent intent = new Intent(this, Moods.class);
+        startActivity(intent);
+    }
+
+
+
+
+
 
 
 }
