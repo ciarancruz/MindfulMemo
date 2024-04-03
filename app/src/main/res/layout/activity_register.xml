@@ -68,22 +68,22 @@
         android:gravity="center"
         android:hint="Last Name"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377"
-        android:textColor="#000000" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editTextEmail"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_below="@id/editTextLastName"
         android:background="@drawable/btn_bg"
         android:gravity="center"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="text"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +97,7 @@
         android:id="@+id/editTextPassword"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_below="@id/editTextUsername"
+        android:layout_below="@id/editTextEmail"
         android:background="@drawable/btn_bg"
         android:gravity="center"
         android:hint="Password"
@@ -142,6 +142,19 @@
         app:layout_constraintVertical_bias="0.926"
         android:textColor="#000000" />
 
+<!--    <Button-->
+<!--        android:id="@+id/buttonGoToCalendar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/editTextConfirmPassword"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:text="Go to Calendar"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.14" />-->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -149,6 +162,20 @@
         android:orientation="vertical"
         android:textColor="#000000"
         app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/backmain"
+        android:layout_width="85dp"
+        android:layout_height="57dp"
+        android:onClick="navigatetoMain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992"
+        app:srcCompat="@drawable/backbut" />
+
 
 
 

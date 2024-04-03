@@ -2,6 +2,7 @@ package com.example.mymemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,14 @@ public class MainActivity extends AppCompatActivity {
     private Button registerButton;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         loginButton = findViewById(R.id.login);
-        registerButton = findViewById(R.id.register);
+        registerButton = findViewById(R.id.register_btn);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +45,5 @@ public class MainActivity extends AppCompatActivity {
     public void register(){
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
-
     }
 }

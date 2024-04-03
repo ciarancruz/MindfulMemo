@@ -1,36 +1,37 @@
 package com.example.mymemo;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "User")
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "user_id")
     @NonNull
     int user_id;
 
+    @ColumnInfo(name = "Firstname")
     @NonNull
     String f_name;
 
+    @ColumnInfo(name = "Lastname")
     @NonNull
     String l_name;
 
+    @ColumnInfo(name = "email")
     @NonNull
-    String username;
+    String email;
 
-    @NonNull
-    String user_email;
-
+    @ColumnInfo(name = "password")
     @NonNull
     String user_password;
 
-    public User(int user_id, @NonNull String f_name, @NonNull String l_name, @NonNull String username, @NonNull String user_email, @NonNull String user_password) {
-        this.user_id = user_id;
+    public User(@NonNull String f_name, @NonNull String l_name, @NonNull String email, @NonNull String user_password) {
         this.f_name = f_name;
         this.l_name = l_name;
-        this.username = username;
-        this.user_email = user_email;
+        this.email = email;
         this.user_password = user_password;
     }
 
@@ -61,21 +62,12 @@ public class User {
     }
 
     @NonNull
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(@NonNull String username) {
-        this.username = username;
-    }
-
-    @NonNull
-    public String getUser_email() {
-        return user_email;
-    }
-
-    public void setUser_email(@NonNull String user_email) {
-        this.user_email = user_email;
+    public void setEmail(@NonNull String email) {
+        this.email = email;
     }
 
     @NonNull
