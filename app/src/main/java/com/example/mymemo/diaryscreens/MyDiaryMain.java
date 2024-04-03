@@ -25,4 +25,28 @@ public class MyDiaryMain extends AppCompatActivity {
         Intent intent = new Intent(this, Mood.class);
         startActivity(intent);
     }
+
+    //public void showPopupMenu(View view) {
+    //PopupMenu popupMenu = new PopupMenu(this, view);
+    //popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+    //@Override
+    //public boolean onMenuItemClick(MenuItem item) {
+    //switch (item.getItemId()) {
+    //case R.id.action_edit:
+    // Handle Edit action
+    //return true;
+    //case R.id.action_delete:
+    // Handle Delete action
+    //return true;
+    // Add cases for other menu items if needed
+    //default:
+    //return false;
+    //}
+    //}
+    //});
+    //popupMenu.inflate(R.menu.dropdown_diary);
+    //popupMenu.show();
+    //}
+
+
 }
