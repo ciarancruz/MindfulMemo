@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/peach_beige"
-    tools:context=".Mood">
+    tools:context=".diaryscreens.Mood">
 
     <TextView
         android:id="@+id/feeling"
@@ -102,6 +102,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btn_bg" />
+
 
     <ImageView
         android:id="@+id/fitent"
@@ -334,6 +335,7 @@
         android:id="@+id/happyicon"
         android:layout_width="49dp"
         android:layout_height="45dp"
+        android:onClick="happyface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.713"

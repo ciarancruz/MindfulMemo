@@ -21,9 +21,10 @@ public class MyDiaryMain extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void navigatetoMood(View view) {
+    public void navigateMood(View view) {
         Intent intent = new Intent(this, Mood.class);
         startActivity(intent);
+        finish();
     }
 
     //public void showPopupMenu(View view) {

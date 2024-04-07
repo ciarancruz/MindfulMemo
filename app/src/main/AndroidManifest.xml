@@ -25,9 +25,7 @@
         <activity
             android:name=".categoryscreens.Study"
             android:exported="false" />
-        <activity
-            android:name=".Mood"
-            android:exported="false" />
+
         <activity
             android:name=".categoryscreens.Hobbies"
             android:exported="false" />
@@ -53,6 +51,9 @@
         <activity
             android:name=".diaryscreens.MyDiaryMain"
             android:exported="false"/>
+        <activity
+            android:name=".diaryscreens.Mood"
+            android:exported="false" />
 
         <activity
             android:name=".galleryscreens.GalleryActivity"
