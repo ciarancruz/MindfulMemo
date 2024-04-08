@@ -54,6 +54,9 @@
         <activity
             android:name=".diaryscreens.Mood"
             android:exported="false" />
+        <activity
+            android:name=".diaryscreens.NewEntry"
+            android:exported="false" />
 
         <activity
             android:name=".galleryscreens.GalleryActivity"
