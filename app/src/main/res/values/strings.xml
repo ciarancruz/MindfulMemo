@@ -36,4 +36,7 @@
     <string name="logo_image">logo_image</string>
     <string name="add_btn">Add_btn</string>
     <string name="imageview3">imageview3</string>
+    <string name="mic_btn">mic_btn</string>
+    <string name="record_diary">Record Diary</string>
+    <string name="picture_diary">Picture Diary</string>
 </resources>

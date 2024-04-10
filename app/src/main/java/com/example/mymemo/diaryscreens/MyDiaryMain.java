@@ -1,17 +1,18 @@
 package com.example.mymemo.diaryscreens;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-
 import com.example.mymemo.R;
-import com.example.mymemo.categoryscreens.CategoryActivity;
-import com.example.mymemo.diaryscreens.Mood;
 
 public class MyDiaryMain extends AppCompatActivity {
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_diary);
+    }
+}
 
 
     //public void navigatetoCategory(View view) {
@@ -47,4 +48,3 @@ public class MyDiaryMain extends AppCompatActivity {
     //}
 
 
-}

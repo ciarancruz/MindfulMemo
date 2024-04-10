@@ -1,4 +1,4 @@
-package com.example.mymemo.categoryscreens;
+package com.example.mymemo.homescreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,26 +10,28 @@ import android.widget.ImageView;
 import com.example.mymemo.R;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
 
-public class Meetings extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    private ImageView backImageView;
+    private ImageView addImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meetings);
+        setContentView(R.layout.activity_home);
 
-        backImageView = findViewById(R.id.backarrow);
-        backImageView.setOnClickListener(new View.OnClickListener() {
+        addImageView = findViewById(R.id.add);
+
+        addImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                meeting();
+                navigatetoDiary();
             }
         });
+
     }
 
-    public void meeting(){
-        Intent intent = new Intent(this, CategoryActivity.class);
+    public void navigatetoDiary(){
+        Intent intent = new Intent(this, MyDiaryMain.class);
         startActivity(intent);
 
     }
