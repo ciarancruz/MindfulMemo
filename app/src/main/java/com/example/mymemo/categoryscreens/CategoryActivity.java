@@ -4,11 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.mymemo.AppDatabase;
+import com.example.mymemo.Login;
 import com.example.mymemo.R;
+import com.example.mymemo.User;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
 import com.example.mymemo.galleryscreens.GalleryActivity;
 
@@ -17,6 +23,7 @@ public class CategoryActivity extends AppCompatActivity {
     private Button galleryButton;
     private ImageView addImageView;
     private Button viewButton;
+    private TextView helloUser;
 
     private Button viewFitnessBtn;
 
@@ -42,6 +49,7 @@ public class CategoryActivity extends AppCompatActivity {
         viewFamilyBtn = findViewById(R.id.view_Family);
         viewHobbiesBtn = findViewById(R.id.view_Hobbies);
         viewMoodBtn = findViewById(R.id.view_Mood);
+        helloUser = findViewById(R.id.hello);
 
 
         galleryButton.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +108,18 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                User user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+                helloUser.setText("Hello " + user.getF_name() + "!");
+            }
+        });
+        thread.start();
 
 
     }
