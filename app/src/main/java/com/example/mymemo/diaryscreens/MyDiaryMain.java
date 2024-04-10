@@ -6,14 +6,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.mymemo.AppDatabase;
 import com.example.mymemo.R;
+import com.example.mymemo.User;
 import com.example.mymemo.categoryscreens.CategoryActivity;
 
 public class MyDiaryMain extends AppCompatActivity {
+    private User user;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+            }
+        });
+        thread.start();
     }
 
     public void navigatetoCategory(View view) {
@@ -23,6 +38,7 @@ public class MyDiaryMain extends AppCompatActivity {
 
     public void navigateMood(View view) {
         Intent intent = new Intent(this, Mood.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
         finish();
     }

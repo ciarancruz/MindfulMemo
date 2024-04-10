@@ -11,17 +11,31 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mymemo.AppDatabase;
 import com.example.mymemo.R;
+import com.example.mymemo.User;
 
 public class Mood extends AppCompatActivity {
 
     private static final String TAG = "Users";
-
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+            }
+        });
+        thread.start();
 
         //skip button option if user does not want to enter mood and tag
         Button skipButton = findViewById(R.id.skip_btn);
@@ -31,6 +45,7 @@ public class Mood extends AppCompatActivity {
             public void onClick(View v) {
                 // Create an Intent to navigate to NewEntry class
                 Intent intent = new Intent(Mood.this, NewEntry.class);
+                intent.putExtra("user", user.getUser_id());
                 startActivity(intent);
             }
         });

@@ -34,6 +34,7 @@ public class CategoryActivity extends AppCompatActivity {
     private Button viewHobbiesBtn;
 
     private Button viewMoodBtn;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +114,7 @@ public class CategoryActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = getIntent();
                 int userID = intent.getIntExtra("user",-1);
-                User user = AppDatabase.getInstance(getApplicationContext())
+                user = AppDatabase.getInstance(getApplicationContext())
                         .userDao()
                         .getUserById(userID);
                 helloUser.setText("Hello " + user.getF_name() + "!");
@@ -131,8 +132,8 @@ public class CategoryActivity extends AppCompatActivity {
 
     public void navigatetoDiary(){
         Intent intent = new Intent(this, MyDiaryMain.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
-
     }
 
     public void viewMeeting(){

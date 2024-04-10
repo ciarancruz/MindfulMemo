@@ -17,6 +17,8 @@ import androidx.room.Room;
 import com.example.mymemo.AppDatabase;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
+import com.example.mymemo.User;
+
 import java.util.Calendar;
 
 
@@ -24,6 +26,7 @@ public class NewEntry extends AppCompatActivity {
     private AppDatabase db;
     private EditText diaryEntry;
     private TextView saveDiary;
+    private User user;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,18 @@ public class NewEntry extends AppCompatActivity {
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
                 .allowMainThreadQueries()
                 .build();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+            }
+        });
+        thread.start();
 
         diaryEntry = findViewById(R.id.typetext);
         saveDiary = findViewById(R.id.save_text);
@@ -49,7 +64,7 @@ public class NewEntry extends AppCompatActivity {
         String diary = diaryEntry.getText().toString();
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, "sdhjfhjs", 1);
+        DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, diary, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(diaryEntry);
 
         Log.d("DiaryEntry", "Added diary to database");
