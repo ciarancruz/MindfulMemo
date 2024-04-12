@@ -39,4 +39,8 @@
     <string name="mic_btn">mic_btn</string>
     <string name="record_diary">Record Diary</string>
     <string name="picture_diary">Picture Diary</string>
+    <string name="new_recording">New Recording</string>
+    <string name="person_voice">person_voice</string>
+    <string name="recording_file_name">Recording File name</string>
+    <string name="add_pictures">Add Pictures</string>
 </resources>

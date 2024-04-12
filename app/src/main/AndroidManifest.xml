@@ -13,29 +13,10 @@
         android:theme="@style/Theme.MyMemo"
         tools:targetApi="31">
         <activity
-            android:name=".homescreens.Moods"
+            android:name=".PictureDiary"
             android:exported="false" />
         <activity
-            android:name=".homescreens.Family"
-            android:exported="false" />
-
-        <activity
-            android:name="Calendar"
-            android:exported="false" />
-        <activity
-            android:name=".homescreens.Study"
-            android:exported="false" />
-        <activity
-            android:name=".Mood"
-            android:exported="false" />
-        <activity
-            android:name=".homescreens.Hobbies"
-            android:exported="false" />
-        <activity
-            android:name=".homescreens.Fitness"
-            android:exported="false" />
-        <activity
-            android:name=".homescreens.Meetings"
+            android:name=".RecordingDiary"
             android:exported="false" />
         <activity
             android:name=".homescreens.HomeActivity"
@@ -48,17 +29,10 @@
             android:exported="false" />
         <activity
             android:name=".DiaryActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".diaryscreens.MyDiaryMain"
-            android:exported="false"/>
-
-        <activity
-            android:name=".galleryscreens.GalleryActivity"
-            android:exported="false"
-            />
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

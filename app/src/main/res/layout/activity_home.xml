@@ -110,6 +110,7 @@
         android:id="@+id/mic"
         android:layout_width="118dp"
         android:layout_height="98dp"
+        android:onClick="navigatetoRec"
         android:contentDescription="@string/mic_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
