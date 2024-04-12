@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.mymemo.PictureDiary;
 import com.example.mymemo.R;
 import com.example.mymemo.RecordingDiary;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
@@ -16,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ImageView addImageView;
     private ImageView micImageView;
+    private ImageView cameraImageview;
 
 
     @Override
@@ -25,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 
         addImageView = findViewById(R.id.add);
         micImageView = findViewById(R.id.mic);
+        cameraImageview = findViewById(R.id.camera);
 
 
         addImageView.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +44,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        cameraImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navPic();
+            }
+        });
+
 
     }
 
@@ -52,6 +62,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public void navMic(){
         Intent intent = new Intent(this, RecordingDiary.class);
+        startActivity(intent);
+
+    }
+
+    public void navPic(){
+        Intent intent = new Intent(this, PictureDiary.class);
         startActivity(intent);
 
     }
