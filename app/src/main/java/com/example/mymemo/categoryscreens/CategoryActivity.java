@@ -109,6 +109,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
+        //Get user id
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

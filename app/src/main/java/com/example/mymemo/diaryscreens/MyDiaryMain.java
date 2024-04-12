@@ -18,6 +18,7 @@ public class MyDiaryMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
 
+        // Get user id
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -40,7 +41,6 @@ public class MyDiaryMain extends AppCompatActivity {
         Intent intent = new Intent(this, Mood.class);
         intent.putExtra("user", user.getUser_id());
         startActivity(intent);
-        finish();
     }
 
     //public void showPopupMenu(View view) {

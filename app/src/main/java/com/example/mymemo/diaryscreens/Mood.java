@@ -47,6 +47,7 @@ public class Mood extends AppCompatActivity {
                 Intent intent = new Intent(Mood.this, NewEntry.class);
                 intent.putExtra("user", user.getUser_id());
                 startActivity(intent);
+                finish();
             }
         });
 

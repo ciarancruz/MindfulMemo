@@ -36,6 +36,7 @@ public class NewEntry extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
+        // Get user id
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -66,8 +67,9 @@ public class NewEntry extends AppCompatActivity {
         long currentTimeMillis = System.currentTimeMillis();
         DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, diary, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(diaryEntry);
-
         Log.d("DiaryEntry", "Added diary to database");
+
+        finish();
     }
 
     class InsertAsyncDiary extends AsyncTask<DiaryEntry, Void, Void> {
