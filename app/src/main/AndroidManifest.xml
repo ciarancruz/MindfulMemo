@@ -21,30 +21,13 @@
         android:theme="@style/Theme.MyMemo"
         tools:targetApi="31">
         <activity
-            android:name=".categoryscreens.Moods"
+            android:name=".PictureDiary"
             android:exported="false" />
         <activity
-            android:name=".categoryscreens.Family"
-            android:exported="false" />
-
-        <activity
-            android:name="Calendar"
+            android:name=".RecordingDiary"
             android:exported="false" />
         <activity
-            android:name=".categoryscreens.Study"
-            android:exported="false" />
-
-        <activity
-            android:name=".categoryscreens.Hobbies"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.Fitness"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.Meetings"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.CategoryActivity"
+            android:name=".homescreens.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Register"
@@ -54,8 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".DiaryActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".diaryscreens.MyDiaryMain"
             android:exported="false"/>
@@ -66,10 +48,10 @@
             android:name=".diaryscreens.NewEntry"
             android:exported="false" />
 
-        <activity
-            android:name=".galleryscreens.GalleryActivity"
-            android:exported="false"
-            />
+<!--        <activity-->
+<!--            android:name=".galleryscreens.GalleryActivity"-->
+<!--            android:exported="false"-->
+<!--            />-->
 
         <activity
             android:name=".MainActivity"

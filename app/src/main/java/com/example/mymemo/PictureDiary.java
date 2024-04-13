@@ -1,35 +1,40 @@
-package com.example.mymemo.categoryscreens;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.mymemo;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.mymemo.R;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 import com.example.mymemo.diaryscreens.MyDiaryMain;
 
-public class Meetings extends AppCompatActivity {
+public class PictureDiary extends AppCompatActivity {
 
     private ImageView backImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meetings);
+        setContentView(R.layout.activity_picture_diary);
 
-        backImageView = findViewById(R.id.backarrow);
+        backImageView = findViewById(R.id.backbtn1);
+
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                meeting();
+                navDiary();
             }
         });
+
     }
 
-    public void meeting(){
-        Intent intent = new Intent(this, CategoryActivity.class);
+    public void navDiary(){
+        Intent intent = new Intent(this, MyDiaryMain.class);
         startActivity(intent);
 
     }
