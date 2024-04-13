@@ -1,5 +1,6 @@
 package com.example.mymemo;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -25,4 +26,7 @@ public interface DiaryEntryDao {
 
     @Query("Select entry_id from DiaryEntry where date = :date")
     List<Integer> getEntryByDate(Long date);
+
+    @Query("Select * from DiaryEntry")
+    LiveData<List<DiaryEntry>> getAllDiaries();
 }

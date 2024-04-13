@@ -18,6 +18,7 @@ import com.example.mymemo.AppDatabase;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import com.example.mymemo.User;
+import com.example.mymemo.homescreens.HomeActivity;
 
 import java.util.Calendar;
 
@@ -69,6 +70,9 @@ public class NewEntry extends AppCompatActivity {
         db.diaryEntryDao().insertDiaryEntry(diaryEntry);
         Log.d("DiaryEntry", "Added diary to database");
 
+        Intent intent = new Intent(this, MyDiaryMain.class);
+        intent.putExtra("user", user.getUser_id());
+        startActivity(intent);
         finish();
     }
 }
