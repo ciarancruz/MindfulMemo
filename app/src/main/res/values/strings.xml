@@ -45,4 +45,6 @@
     <string name="add_pictures">Add Pictures</string>
     <string name="save">Save</string>
     <string name="camera">camera</string>
+    <string name="enter_picture_title">Enter picture title</string>
+    <string name="diary_title">Diary Title</string>
 </resources>
