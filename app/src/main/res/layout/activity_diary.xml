@@ -79,13 +79,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.225" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
-
     <ImageView
         android:id="@+id/linedesign"
         android:layout_width="180dp"
@@ -99,8 +92,8 @@
         app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="@id/imageView"
         app:layout_constraintTop_toTopOf="@id/imageView"
-        app:layout_constraintVertical_bias="0.533"
-        app:srcCompat="@drawable/line2" />
+        app:layout_constraintVertical_bias="0.533"/>
+<!--        app:srcCompat="@drawable/line2" -->
 
     <TextView
         android:id="@+id/title_diary"
@@ -118,16 +111,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.196" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="35dp"
-        android:layout_height="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/heart" />
 
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView10"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.922"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+<!--        app:srcCompat="@drawable/heart" -->
     <ImageButton
         android:id="@+id/blackdots"
         style="@android:style/Widget.Material.ImageButton"
@@ -136,27 +129,29 @@
         android:backgroundTint="#7A9364"
         android:scaleType="centerInside"
         android:onClick="showPopupMenu"
+        android:contentDescription="@string/threedots_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197"
-        app:srcCompat="@drawable/blackdots" />
+        app:layout_constraintVertical_bias="0.197"/>
+<!--        app:srcCompat="@drawable/blackdots" -->
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/heartlike"
         android:layout_width="52dp"
         android:layout_height="49dp"
         android:backgroundTint="#7A9364"
         android:scaleType="fitCenter"
+        android:contentDescription="@string/heart_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297"
-        app:srcCompat="@drawable/heart" />
+        app:layout_constraintVertical_bias="0.297"/>
+<!--        app:srcCompat="@drawable/heart" -->
 
     <ImageButton
         android:id="@+id/plusadd"
@@ -164,7 +159,7 @@
         android:layout_height="90dp"
         android:backgroundTint="#FEEED9"
         android:scaleType="fitCenter"
-        android:onClick="navigatetoMood"
+        android:onClick="navigateMood"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.986"
@@ -179,7 +174,8 @@
         android:layout_height="87dp"
         android:backgroundTint="#FEEED9"
         android:scaleType="fitCenter"
-        android:onClick="navigatetoCategory"
+        android:onClick="navigateToHome"
+        android:contentDescription="@string/back_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/galleryadd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/peach_beige">
@@ -52,8 +53,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/typetext"
-        android:layout_width="366dp"
-        android:layout_height="41dp"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
         android:hint="Type text here..."
         android:textColor="#000000"
         android:textSize="20sp"
@@ -64,5 +65,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.127" />
+
+    <ImageButton
+        android:id="@+id/addgallery"
+        android:layout_width="68dp"
+        android:layout_height="59dp"
+        android:backgroundTint="#FEEED9"
+        android:contentDescription="@string/add_gallery"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/galleryicon" />
+
+    <ImageButton
+        android:id="@+id/audioadd"
+        android:layout_width="57dp"
+        android:layout_height="63dp"
+        android:backgroundTint="#FEEED9"
+        android:contentDescription="@string/add_audio"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/microicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

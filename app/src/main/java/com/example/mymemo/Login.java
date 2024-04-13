@@ -1,6 +1,6 @@
 package com.example.mymemo;
 
-import com.example.mymemo.categoryscreens.CategoryActivity;
+import com.example.mymemo.homescreens.HomeActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.Locale;
-
-import com.example.mymemo.categoryscreens.CategoryActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -84,8 +81,9 @@ public class Login extends AppCompatActivity {
                     Log.d(TAG, "run: " + user.getF_name());
 
                     // Check if password matches account
-                    if (password.equalsIgnoreCase(user.getUser_password())) {
-                        Intent intent = new Intent(Login.this, CategoryActivity.class);
+                    if (password.equals(user.getUser_password())) {
+                        Intent intent = new Intent(Login.this, HomeActivity.class);
+                        intent.putExtra("user", user.getUser_id());
                         startActivity(intent);
                         finish();
                     }

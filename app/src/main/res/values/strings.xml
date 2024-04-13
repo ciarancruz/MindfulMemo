@@ -24,10 +24,23 @@
     <string name="hobbie_icon">hobbie_icon</string>
     <string name="mood_icon">mood_icon</string>
     <string name="back_btn">back_btn</string>
+    <string name="back_button_description">Back_button</string>
+    <string name="plus_add_btn">Plus_add</string>
+    <string name="heart_button">Heart_button</string>
+    <string name="threedots_description">Three_dots</string>
+    <string name="add_gallery">Add_gallery</string>
+    <string name="add_audio">Add_audio</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
     <string name="logo_image">logo_image</string>
     <string name="add_btn">Add_btn</string>
     <string name="imageview3">imageview3</string>
+    <string name="mic_btn">mic_btn</string>
+    <string name="record_diary">Record Diary</string>
+    <string name="picture_diary">Picture Diary</string>
+    <string name="new_recording">New Recording</string>
+    <string name="person_voice">person_voice</string>
+    <string name="recording_file_name">Recording File name</string>
+    <string name="add_pictures">Add Pictures</string>
 </resources>
