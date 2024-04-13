@@ -43,4 +43,6 @@
     <string name="person_voice">person_voice</string>
     <string name="recording_file_name">Recording File name</string>
     <string name="add_pictures">Add Pictures</string>
+    <string name="save">Save</string>
+    <string name="camera">camera</string>
 </resources>
