@@ -97,7 +97,6 @@ public class Register extends AppCompatActivity {
     }
 
     class InsertAsyncUser extends AsyncTask<User, Void, Void> {
-
         @Override
         protected Void doInBackground(User... users) {
 

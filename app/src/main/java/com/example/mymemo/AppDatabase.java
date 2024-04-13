@@ -16,7 +16,7 @@ public abstract class AppDatabase extends RoomDatabase{
     public abstract TagDao tagDao();
 
     private static volatile AppDatabase INSTANCE;
-    static AppDatabase getInstance(Context context) {
+    public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {

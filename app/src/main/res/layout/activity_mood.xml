@@ -103,6 +103,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btn_bg" />
 
+
     <ImageView
         android:id="@+id/fitent"
         android:layout_width="137dp"
@@ -334,6 +335,7 @@
         android:id="@+id/happyicon"
         android:layout_width="49dp"
         android:layout_height="45dp"
+        android:onClick="happyface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.713"
