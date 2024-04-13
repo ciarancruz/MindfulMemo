@@ -40,6 +40,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.122" />
 
+
+
     <ImageView
         android:id="@+id/diaryimage"
         android:layout_width="134dp"
@@ -52,65 +54,6 @@
         app:layout_constraintVertical_bias="0.032"
         app:srcCompat="@drawable/diaryicon" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="360dp"
-        android:layout_height="119dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219"
-        app:srcCompat="@drawable/box" />
-
-    <TextView
-        android:id="@+id/datediary"
-        android:layout_width="80dp"
-        android:layout_height="88dp"
-        android:hint="10              Feb 2024   Tuesday   19:00 PM"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
-
-    <ImageView
-        android:id="@+id/linedesign"
-        android:layout_width="180dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/imageView"
-        app:layout_constraintEnd_toEndOf="@id/imageView"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView"
-        app:layout_constraintVertical_bias="0.533"/>
-<!--        app:srcCompat="@drawable/line2" -->
-
-    <TextView
-        android:id="@+id/title_diary"
-        android:layout_width="74dp"
-        android:layout_height="49dp"
-        android:hint="Title"
-        android:inputType="text"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
-
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imageView10"-->
@@ -121,38 +64,6 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"/>-->
 <!--        app:srcCompat="@drawable/heart" -->
-    <ImageButton
-        android:id="@+id/blackdots"
-        style="@android:style/Widget.Material.ImageButton"
-        android:layout_width="72dp"
-        android:layout_height="52dp"
-        android:backgroundTint="#7A9364"
-        android:scaleType="centerInside"
-        android:onClick="showPopupMenu"
-        android:contentDescription="@string/threedots_description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.923"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197"/>
-<!--        app:srcCompat="@drawable/blackdots" -->
-
-    <ImageButton
-        android:id="@+id/heartlike"
-        android:layout_width="52dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#7A9364"
-        android:scaleType="fitCenter"
-        android:contentDescription="@string/heart_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297"/>
-<!--        app:srcCompat="@drawable/heart" -->
-
     <ImageButton
         android:id="@+id/plusadd"
         android:layout_width="100dp"
@@ -183,5 +94,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/backbtn" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/plusadd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recentdiary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
