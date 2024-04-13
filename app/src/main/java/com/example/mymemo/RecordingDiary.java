@@ -1,6 +1,7 @@
 package com.example.mymemo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.room.Room;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,12 +30,18 @@ public class RecordingDiary extends AppCompatActivity {
     private ImageView pauseBtn;
     private ImageView recordMic;
     private boolean isRecording;
+    private AppDatabase db;
+    private User user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording_diary);
+
+        db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
+                .allowMainThreadQueries()
+                .build();
 
         recordMic = findViewById(R.id.record_mic);
         playBtn = findViewById(R.id.play_btn);
@@ -81,11 +89,27 @@ public class RecordingDiary extends AppCompatActivity {
                 }
             }
         });
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+            }
+        });
+        thread.start();
     }
 
     private void startRecording(String fileName) {
         outputFile = getExternalCacheDir().getAbsolutePath(); // Get the cache directory
         outputFile += "/" + fileName; // Specify file name
+
+        long currentTimeMillis = System.currentTimeMillis();
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", outputFile, user.getUser_id());
+        db.diaryEntryDao().insertDiaryEntry(newDiary);
 
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -124,7 +148,6 @@ public class RecordingDiary extends AppCompatActivity {
             mediaRecorder = null;
             Toast.makeText(this, "Recording stopped", Toast.LENGTH_SHORT).show();
             verifyRecording();
-
         }
     }
 
@@ -151,6 +174,7 @@ public class RecordingDiary extends AppCompatActivity {
 
     private boolean isRecordingSaved(String filePath) {
         File file = new File(filePath);
+
         if (file.exists() && file.isFile()) {
             long fileSize = file.length();
             return fileSize > 0; // Check if the file size is greater than 0
