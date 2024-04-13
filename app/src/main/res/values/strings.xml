@@ -24,10 +24,38 @@
     <string name="hobbie_icon">hobbie_icon</string>
     <string name="mood_icon">mood_icon</string>
     <string name="back_btn">back_btn</string>
+    <string name="Back_button">Back_button</string>
+    <string name="Plus_add">Plus_add</string>
+    <string name="more_options">More_options</string>
+    <string name="like_diary">Like_diary</string>
+    <string name="img_vids">Image_videos</string>
+    <string name="scroll_recent">Scroll_recent</string>
+    <string name="add_voice">Add_voice</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
     <string name="logo_image">logo_image</string>
     <string name="add_btn">Add_btn</string>
     <string name="imageview3">imageview3</string>
+
+    <!-- Title name items for each new entry in my diary page-->
+    <string-array name="Title_Diary">
+        <item>Holiday In France</item>
+        <item>My First Concert</item>
+        <item>Jane Party</item>
+    </string-array>
+
+    <string name="title_diary">Title_diary</string>
+
+    <!-- Diary name items for each new entry in my diary page -->
+    <string-array name="Date_Diary">
+        <item>10 Feb 2024 Saturday 15:00 PM</item>
+        <item>26 Feb 2024 Monday 09:00 AM</item>
+        <item>13 Mar 2024 Wednesday 12:00 PM</item>
+    </string-array>
+
+    <string name="date_diary">Date_diary</string>
+
+
 </resources>

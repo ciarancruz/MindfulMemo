@@ -3,4 +3,6 @@
     <item name="calendarView" type="id" />
     <item name="entryListView" type="id" />
     <item name="noEntriesTextView" type="id" />
+    <item name="action_edit" type="id"/>
+    <item name="action_delete" type="id"/>
 </resources>

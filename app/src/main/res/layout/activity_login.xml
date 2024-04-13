@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/Login"
-        android:layout_width="92dp"
-        android:layout_height="49dp"
+        android:layout_width="97dp"
+        android:layout_height="45dp"
         android:text="Login"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -34,12 +34,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.384" />
+        app:layout_constraintVertical_bias="0.389" />
 
     <EditText
         android:id="@+id/EmailAddressText"
-        android:layout_width="319dp"
-        android:layout_height="65dp"
+        android:layout_width="314dp"
+        android:layout_height="54dp"
         android:background="@drawable/btn_bg"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
@@ -48,7 +48,6 @@
         android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
@@ -66,15 +65,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <EditText
         android:id="@+id/PasswordText"
-        android:layout_width="323dp"
-        android:layout_height="64dp"
+        android:layout_width="314dp"
+        android:layout_height="54dp"
         android:background="@drawable/btn_bg"
         android:ems="10"
         android:hint="  Enter password..."
@@ -82,13 +81,12 @@
         android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.704" />
+        app:layout_constraintVertical_bias="0.683" />
 
     <TextView
         android:id="@+id/PasswordName"
@@ -100,15 +98,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.599" />
 
     <Button
         android:id="@+id/Loginbutton"
-        android:layout_width="147dp"
-        android:layout_height="57dp"
+        android:layout_width="155dp"
+        android:layout_height="52dp"
         android:background="@drawable/btn_bg"
         android:onClick="navigatetoCategory"
         android:text="Login"
@@ -120,7 +118,7 @@
         app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
+        app:layout_constraintVertical_bias="0.796" />
 
     <TextView
         android:id="@+id/regquestion"
@@ -140,8 +138,8 @@
 
     <TextView
         android:id="@+id/registerlink"
-        android:layout_width="116dp"
-        android:layout_height="37dp"
+        android:layout_width="100dp"
+        android:layout_height="56dp"
         android:clickable="true"
         android:fontFamily="sans-serif-black"
         android:onClick="navigatetoRegister"
@@ -151,16 +149,17 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.909" />
 
     <ImageView
         android:id="@+id/firstbackmain"
         android:layout_width="98dp"
         android:layout_height="68dp"
         android:onClick="navigatetoMain"
+        android:contentDescription="@string/back_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

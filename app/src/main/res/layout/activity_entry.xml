@@ -52,17 +52,64 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/typetext"
-        android:layout_width="366dp"
-        android:layout_height="41dp"
+        android:layout_width="368dp"
+        android:layout_height="52dp"
         android:hint="Type text here..."
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.207" />
+
+    <ImageButton
+        android:id="@+id/image_videos"
+        android:layout_width="74dp"
+        android:layout_height="64dp"
+        android:backgroundTint="#FEEED9"
+        android:contentDescription="@string/img_vids"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.003"
+        app:srcCompat="@drawable/galleryicon" />
+
+    <ImageButton
+        android:id="@+id/voice_record"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:backgroundTint="#FEEED9"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/add_voice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.002"
+        app:srcCompat="@drawable/microicon" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="109dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="448dp"
+        android:fontFamily="casual"
+        android:text="Title"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.391" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
