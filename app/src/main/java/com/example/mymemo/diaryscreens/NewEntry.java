@@ -71,15 +71,4 @@ public class NewEntry extends AppCompatActivity {
 
         finish();
     }
-
-    class InsertAsyncDiary extends AsyncTask<DiaryEntry, Void, Void> {
-        @Override
-        protected Void doInBackground(DiaryEntry... DiaryEntry) {
-
-            AppDatabase.getInstance(getApplicationContext())
-                    .diaryEntryDao()
-                    .insertDiaryEntry(DiaryEntry[0]);
-            return null;
-        }
-    }
 }

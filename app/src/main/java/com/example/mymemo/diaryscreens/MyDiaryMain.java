@@ -34,7 +34,9 @@ public class MyDiaryMain extends AppCompatActivity {
 
     public void navigatetoCategory(View view) {
         Intent intent = new Intent(this, CategoryActivity.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
+        finish();
     }
 
     public void navigateMood(View view) {
