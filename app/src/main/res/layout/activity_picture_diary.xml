@@ -17,6 +17,7 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.561"
@@ -38,14 +39,25 @@
         android:contentDescription="@string/back_btn" />
 
     <ImageView
-        android:id="@+id/record_mic"
+        android:id="@+id/takePicture"
         android:layout_width="204dp"
         android:layout_height="123dp"
         android:src="@drawable/camera"
+        android:onClick="pickPhoto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/insertedImage"
+        android:layout_width="225dp"
+        android:layout_height="400dp"
+        app:layout_constraintBottom_toTopOf="@+id/takePicture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newRecord" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
