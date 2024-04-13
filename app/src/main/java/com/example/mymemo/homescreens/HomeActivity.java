@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.mymemo.AppDatabase;
 import com.example.mymemo.PictureDiary;
 import com.example.mymemo.R;
 import com.example.mymemo.RecordingDiary;
+import com.example.mymemo.User;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
 
 public class HomeActivity extends AppCompatActivity {
@@ -18,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView addImageView;
     private ImageView micImageView;
     private ImageView cameraImageview;
+
+    private User user;
 
 
     @Override
@@ -28,6 +32,19 @@ public class HomeActivity extends AppCompatActivity {
         addImageView = findViewById(R.id.add);
         micImageView = findViewById(R.id.mic);
         cameraImageview = findViewById(R.id.camera);
+
+        // Get user id
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+            }
+        });
+        thread.start();
 
 
         addImageView.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void navigatetoDiary(){
         Intent intent = new Intent(this, MyDiaryMain.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
 
     }

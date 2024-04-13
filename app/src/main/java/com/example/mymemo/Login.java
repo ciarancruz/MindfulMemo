@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
                     Log.d(TAG, "run: " + user.getF_name());
 
                     // Check if password matches account
-                    if (password.equalsIgnoreCase(user.getUser_password())) {
+                    if (password.equals(user.getUser_password())) {
                         Intent intent = new Intent(Login.this, HomeActivity.class);
                         intent.putExtra("user", user.getUser_id());
                         startActivity(intent);
