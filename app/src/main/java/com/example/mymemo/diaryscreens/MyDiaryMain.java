@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 
 import com.example.mymemo.AppDatabase;
@@ -30,28 +31,34 @@ public class MyDiaryMain extends AppCompatActivity {
     private AppDatabase db;
     private ViewModal viewModal;
 
+    // User Model
+    private int user_ID;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
-
-        // Get user id
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = getIntent();
-                int userID = intent.getIntExtra("user",-1);
-                user = AppDatabase.getInstance(getApplicationContext())
-                        .userDao()
-                        .getUserById(userID);
-            }
-        });
-        thread.start();
 
         // Instantiate database
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
                 .allowMainThreadQueries()
                 .build();
 
+        Log.d("Debug", "onCreate: Called");
+
+        // Get user id
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("Debug", "in thread: called");
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+                user_ID = user.getUser_id();
+            }
+        });
+        thread.start();
 
         // Recycler View
         recyclerView = findViewById(R.id.recycler_view);
@@ -59,16 +66,22 @@ public class MyDiaryMain extends AppCompatActivity {
         adapter = new DiaryAdapter();
         recyclerView.setAdapter(adapter);
         viewModal = new ViewModelProvider(this).get(ViewModal.class);
-        viewModal.getAllDiaries().observe(this, diaryEntries -> adapter.setDataList(diaryEntries));
 
-//        // Observe changes in Recipe Model
-//        viewmodal.getAllRecipes().observe(this, new Observer<List<RecipeModel>>() {
-//            @Override
-//            public void onChanged(List<RecipeModel> models) {
-//                adapter.submitList(models);
-//            }
-//        });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        viewModal.getDiaryByUser(user_ID).observe(this, diaryEntries -> {
+            Log.d("Debug", "onCreate: userID "+ user_ID);
+            Log.d("Debug", "onCreate: diary "+ diaryEntries.size());
+            adapter.setDataList(diaryEntries);
+        });
+
+    }
+
+
 
     public void navigateToHome(View view) {
         Intent intent = new Intent(this, HomeActivity.class);

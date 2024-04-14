@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,11 +24,13 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView cameraImageview;
     private TextView helloText;
 
+    private final String TAG = "Debug";
     private User user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -51,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         thread.start();
 
+//        Log.d(TAG, "onCreate: "+ user.getF_name());
 
         addImageView.setOnClickListener(new View.OnClickListener() {
             @Override

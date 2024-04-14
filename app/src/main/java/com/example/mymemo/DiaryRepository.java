@@ -15,10 +15,9 @@ public class DiaryRepository {
     public DiaryRepository(Application application) {
         AppDatabase db = AppDatabase.getInstance(application);
         diaryEntryDao = db.diaryEntryDao();
-        allDiaries = diaryEntryDao.getAllDiaries();
     }
 
-    public LiveData<List<DiaryEntry>> getAllItems() {
-        return allDiaries;
+    public LiveData<List<DiaryEntry>> getDiaryByUser(int user_id) {
+        return diaryEntryDao.getAllDiaries(user_id);
     }
 }

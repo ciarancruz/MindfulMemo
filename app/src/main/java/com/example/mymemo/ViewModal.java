@@ -14,10 +14,10 @@ public class ViewModal extends AndroidViewModel {
     public ViewModal(Application application) {
         super(application);
         repository = new DiaryRepository(application);
-        allDiaries = repository.getAllItems();
     }
 
-    public LiveData<List<DiaryEntry>> getAllDiaries() {
+    public LiveData<List<DiaryEntry>> getDiaryByUser(int user_id) {
+        allDiaries = repository.getDiaryByUser(user_id);
         return allDiaries;
     }
 }
