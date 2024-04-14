@@ -3,8 +3,10 @@ package com.example.mymemo.diaryscreens;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -15,6 +17,7 @@ import com.example.mymemo.R;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.mymemo.AppDatabase;
 import com.example.mymemo.User;
@@ -67,6 +70,28 @@ public class MyDiaryMain extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         viewModal = new ViewModelProvider(this).get(ViewModal.class);
 
+
+        // Deleting Recipes
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            // Swiping on an item deletes it from database
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                DiaryEntry deletedDiary = adapter.getDiaryAt(position);
+
+                // Remove item from the RecyclerView
+                adapter.deleteDiary(position);
+
+                // Delete item from the database
+                db.diaryEntryDao().deleteDiaryEntry(deletedDiary);
+                Toast.makeText(MyDiaryMain.this, "Diary deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 
     @Override
