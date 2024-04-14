@@ -46,12 +46,12 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-//
-//    // when user clicks on back button it leads them to the main page
-//    public void navigatetoMain(){
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//    }
+
+   // when user clicks on back button it leads them to the main page
+   public void navigatetoMain(){
+            Intent intent = new Intent(this, MainActivity.class);
+           startActivity(intent);
+    }
 
     private void initializeViews() {
         editTextEmail = findViewById(R.id.EmailAddressText);
