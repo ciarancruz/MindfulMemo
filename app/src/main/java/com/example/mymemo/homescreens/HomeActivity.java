@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mymemo.AppDatabase;
 import com.example.mymemo.PictureDiary;
@@ -20,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView addImageView;
     private ImageView micImageView;
     private ImageView cameraImageview;
+    private TextView helloText;
 
     private User user;
 
@@ -32,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         addImageView = findViewById(R.id.add);
         micImageView = findViewById(R.id.mic);
         cameraImageview = findViewById(R.id.camera);
+        helloText = findViewById(R.id.hello);
 
         // Get user id
         Thread thread = new Thread(new Runnable() {
@@ -42,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
                 user = AppDatabase.getInstance(getApplicationContext())
                         .userDao()
                         .getUserById(userID);
+                helloText.setText("Hello " + user.getF_name() + "!");
+
             }
         });
         thread.start();
