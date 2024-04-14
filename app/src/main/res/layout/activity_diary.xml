@@ -71,6 +71,7 @@
         android:backgroundTint="#FEEED9"
         android:scaleType="fitCenter"
         android:onClick="navigateMood"
+        android:contentDescription="@string/add_entry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.986"
