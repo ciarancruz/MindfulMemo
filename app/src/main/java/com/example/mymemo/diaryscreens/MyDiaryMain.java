@@ -1,17 +1,23 @@
 package com.example.mymemo.diaryscreens;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import android.content.Intent;
 import android.view.View;
 
 import com.example.mymemo.AppDatabase;
 import com.example.mymemo.User;
+import com.example.mymemo.ViewModal;
 import com.example.mymemo.homescreens.HomeActivity;
 
 import java.util.ArrayList;
@@ -19,6 +25,10 @@ import java.util.List;
 
 public class MyDiaryMain extends AppCompatActivity {
     private User user;
+    private DiaryAdapter adapter;
+    private RecyclerView recyclerView;
+    private AppDatabase db;
+    private ViewModal viewModal;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +47,27 @@ public class MyDiaryMain extends AppCompatActivity {
         });
         thread.start();
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        // Instantiate database
+        db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
+                .allowMainThreadQueries()
+                .build();
+
+
+        // Recycler View
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        List<String> dataList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            dataList.add("Item " + (i + 1));
-        }
-
-        DiaryAdapter adapter = new DiaryAdapter(dataList);
+        adapter = new DiaryAdapter();
         recyclerView.setAdapter(adapter);
+        viewModal = new ViewModelProvider(this).get(ViewModal.class);
+        viewModal.getAllDiaries().observe(this, diaryEntries -> adapter.setDataList(diaryEntries));
+
+//        // Observe changes in Recipe Model
+//        viewmodal.getAllRecipes().observe(this, new Observer<List<RecipeModel>>() {
+//            @Override
+//            public void onChanged(List<RecipeModel> models) {
+//                adapter.submitList(models);
+//            }
+//        });
     }
 
     public void navigateToHome(View view) {

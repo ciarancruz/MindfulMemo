@@ -8,18 +8,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder> {
 
     // Test Data
-    private List<String> dataList;
+    private List<DiaryEntry> dataList = new ArrayList<>();
 
-    //Constructor for data
-    public DiaryAdapter(List<String> dataList) {
-        this.dataList = dataList;
+//    //Constructor for data
+//    public DiaryAdapter(List<DiaryEntry> dataList) {
+//        this.dataList = dataList;
+//    }
+
+    public void setDataList(List<DiaryEntry> datalist) {
+        this.dataList = datalist;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,8 +38,8 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String data = dataList.get(position);
-        holder.textView.setText(data);
+        DiaryEntry data = dataList.get(position);
+        holder.textView.setText(data.getText_content());
     }
 
     @Override
