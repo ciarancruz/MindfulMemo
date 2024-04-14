@@ -108,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
-        android:onClick="navigatetoCategory"
+        android:onClick="navigateToHome"
         android:text="Login"
         android:textColor="#000000"
         android:textSize="14sp"
@@ -121,8 +121,8 @@
 
     <TextView
         android:id="@+id/regquestion"
-        android:layout_width="198dp"
-        android:layout_height="60dp"
+        android:layout_width="203dp"
+        android:layout_height="64dp"
         android:fontFamily="sans-serif-black"
         android:text="Don't have an account?"
         android:textColor="#000000"
@@ -136,8 +136,8 @@
 
     <TextView
         android:id="@+id/registerlink"
-        android:layout_width="116dp"
-        android:layout_height="37dp"
+        android:layout_width="127dp"
+        android:layout_height="50dp"
         android:clickable="true"
         android:fontFamily="sans-serif-black"
         android:onClick="navigatetoRegister"
@@ -146,16 +146,17 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.919" />
 
     <ImageView
         android:id="@+id/firstbackmain"
         android:layout_width="70dp"
         android:layout_height="56dp"
         android:onClick="navigatetoMain"
+        android:contentDescription="@string/back_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/text_view"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:padding="16dp"
-android:textSize="18sp"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/rounded_background"
+    android:padding="70dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
+
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:text="Title" />
+</LinearLayout>
+
+
 
