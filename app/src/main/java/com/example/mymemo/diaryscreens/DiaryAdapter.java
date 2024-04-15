@@ -47,6 +47,15 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
         return dataList.size();
     }
 
+    public DiaryEntry getDiaryAt(int position) {
+        return dataList.get(position);
+    }
+
+    public void deleteDiary(int position) {
+        dataList.remove(position);
+        notifyItemRemoved(position);
+    }
+
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
 
