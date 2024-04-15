@@ -39,7 +39,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         DiaryEntry data = dataList.get(position);
-        holder.textView.setText(data.getText_content());
+        holder.textView.setText(data.getTitle());
     }
 
     @Override
