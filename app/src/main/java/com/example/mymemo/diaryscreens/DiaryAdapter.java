@@ -40,6 +40,13 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         DiaryEntry data = dataList.get(position);
         holder.textView.setText(data.getTitle());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the edit / preview of the diary.
+            }
+        });
     }
 
     @Override
