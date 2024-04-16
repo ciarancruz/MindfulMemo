@@ -18,7 +18,6 @@
         android:autofillHints=""
         android:hint="@string/enter_picture_title"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/record_mic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
