@@ -9,9 +9,11 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +38,10 @@ public class RecordingDiary extends AppCompatActivity {
     private boolean isRecording;
     private AppDatabase db;
     private User user;
+    private TextView timer;
+    private Handler handler;
+    private Runnable timerRunnable;
+    private long startTimeMillis;
 
 
     @Override
@@ -51,6 +57,7 @@ public class RecordingDiary extends AppCompatActivity {
         playBtn = findViewById(R.id.play_btn);
         pauseBtn = findViewById(R.id.pause_btn);
         backBtn = findViewById(R.id.backbtn1);
+        timer = findViewById(R.id.recording_time);
 
         recordMic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +97,7 @@ public class RecordingDiary extends AppCompatActivity {
                 if (outputFile != null) {
                     playAudio(outputFile);
                 } else {
-//                    Toast.makeText(this, "No audio recording found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecordingDiary.this, "No audio recording found", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -113,6 +120,22 @@ public class RecordingDiary extends AppCompatActivity {
             }
         });
         thread.start();
+
+        handler = new Handler();
+        timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                long elapsedTimeMillis = System.currentTimeMillis() - startTimeMillis;
+                int seconds = (int) (elapsedTimeMillis / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+
+                String timeString = String.format("%02d:%02d", minutes, seconds);
+                timer.setText(timeString);
+
+                handler.postDelayed(this, 1000); // Update every second
+            }
+        };
     }
 
     private void startRecording(String fileName) {
@@ -125,8 +148,11 @@ public class RecordingDiary extends AppCompatActivity {
 
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+        mediaRecorder.setAudioChannels(1); // Mono audio
+        mediaRecorder.setAudioEncodingBitRate(128000); // Bit rate 128kbps
+        mediaRecorder.setAudioSamplingRate(44100); // Sample rate 44.1 kHz
         mediaRecorder.setOutputFile(outputFile);
 
         try {
@@ -140,6 +166,9 @@ public class RecordingDiary extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Failed to start recording", Toast.LENGTH_SHORT).show();
         }
+
+        startTimeMillis = System.currentTimeMillis();
+        handler.postDelayed(timerRunnable, 0);
     }
 
     private void stopRecording() {
@@ -160,16 +189,29 @@ public class RecordingDiary extends AppCompatActivity {
             mediaRecorder = null;
             Toast.makeText(this, "Recording stopped", Toast.LENGTH_SHORT).show();
             verifyRecording();
+            handler.removeCallbacks(timerRunnable);
         }
     }
 
     private void playAudio(String filePath) {
         MediaPlayer mediaPlayer = new MediaPlayer();
+        timer.setText("00:00");
+
+        startTimeMillis = System.currentTimeMillis();
+        handler.postDelayed(timerRunnable, 0);
         try {
             mediaPlayer.setDataSource(filePath);
             mediaPlayer.prepare();
             mediaPlayer.start();
             Toast.makeText(this, "Playing audio", Toast.LENGTH_SHORT).show();
+
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    // Stop timer when audio playback finishes
+                    handler.removeCallbacks(timerRunnable); // Stop updating timer
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
