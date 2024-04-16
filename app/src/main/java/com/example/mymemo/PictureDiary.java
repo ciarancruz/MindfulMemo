@@ -116,17 +116,11 @@ public class PictureDiary extends AppCompatActivity {
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navDiary();
-            }
+                finish();
+            } // Use finish, a lot more efficient
         });
 
     }
-
-    public void navDiary(){
-        Intent intent = new Intent(this, MyDiaryMain.class);
-        startActivity(intent);
-    }
-
 
     // Taking a photo Reference: https://developer.android.com/training/camera-deprecated/photobasics
     public void pickPhoto(View view) {

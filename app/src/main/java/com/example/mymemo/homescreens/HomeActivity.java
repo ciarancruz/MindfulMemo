@@ -89,14 +89,13 @@ public class HomeActivity extends AppCompatActivity {
 
     public void navMic(){
         Intent intent = new Intent(this, RecordingDiary.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
-
     }
 
     public void navPic(){
         Intent intent = new Intent(this, PictureDiary.class);
         startActivity(intent);
-
     }
 
 }

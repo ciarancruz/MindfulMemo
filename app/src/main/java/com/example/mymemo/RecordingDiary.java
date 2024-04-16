@@ -19,6 +19,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 
+import com.example.mymemo.diaryscreens.MyDiaryMain;
+import com.example.mymemo.homescreens.HomeActivity;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -29,6 +32,7 @@ public class RecordingDiary extends AppCompatActivity {
     private ImageView playBtn;
     private ImageView pauseBtn;
     private ImageView recordMic;
+    private ImageView backBtn;
     private boolean isRecording;
     private AppDatabase db;
     private User user;
@@ -46,6 +50,7 @@ public class RecordingDiary extends AppCompatActivity {
         recordMic = findViewById(R.id.record_mic);
         playBtn = findViewById(R.id.play_btn);
         pauseBtn = findViewById(R.id.pause_btn);
+        backBtn = findViewById(R.id.backbtn1);
 
         recordMic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +95,13 @@ public class RecordingDiary extends AppCompatActivity {
             }
         });
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -104,12 +116,12 @@ public class RecordingDiary extends AppCompatActivity {
     }
 
     private void startRecording(String fileName) {
-        outputFile = getExternalCacheDir().getAbsolutePath(); // Get the cache directory
-        outputFile += "/" + fileName; // Specify file name
+        outputFile = getExternalCacheDir().getAbsolutePath();
+        outputFile += "/" + fileName;
 
         long currentTimeMillis = System.currentTimeMillis();
-//        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", outputFile, user.getUser_id());
-//        db.diaryEntryDao().insertDiaryEntry(newDiary);
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", "", outputFile, user.getUser_id());
+        db.diaryEntryDao().insertDiaryEntry(newDiary);
 
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
