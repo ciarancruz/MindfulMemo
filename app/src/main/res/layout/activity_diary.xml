@@ -79,49 +79,31 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"/>-->
 <!--        app:srcCompat="@drawable/heart" -->
-    <ImageButton
-        android:id="@+id/plusadd"
-        android:layout_width="71dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#FEEED9"
-        android:contentDescription="@string/add_entry"
-        android:onClick="navigateMood"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.986"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99"
-        app:srcCompat="@drawable/blackplus" />
-
-    <ImageButton
-        android:id="@+id/backbutton"
-        android:layout_width="73dp"
-        android:layout_height="75dp"
-        android:backgroundTint="#FEEED9"
-        android:contentDescription="@string/back_button_description"
-        android:onClick="navigateToHome"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/backbtn" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="377dp"
         android:layout_height="422dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/plusadd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/peach_beige"
+        app:itemIconTint="@drawable/item_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.997"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-46dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

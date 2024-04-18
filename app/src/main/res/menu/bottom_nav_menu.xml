@@ -6,9 +6,9 @@
         android:title="@string/home"
         android:icon="@drawable/baseline_home_24"/>
     <item
-        android:id="@+id/add"
-        android:title="@string/add"
-        android:icon="@drawable/baseline_add_circle"/>
+        android:id="@+id/allDiary"
+        android:title="@string/all_diary"
+        android:icon="@drawable/diary_book"/>
     <item
         android:id="@+id/calender"
         android:title="@string/calender"

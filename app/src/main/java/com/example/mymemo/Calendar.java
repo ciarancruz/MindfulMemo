@@ -1,5 +1,6 @@
 package com.example.mymemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,6 +9,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mymemo.diaryscreens.MyDiaryMain;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +26,28 @@ public class Calendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
+        bottomNavigationView.setSelectedItemId(R.id.calender);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.allDiary) {
+                startActivity(new Intent(getApplicationContext(), MyDiaryMain.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.calender) {
+                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
 
         // Initialize views
         calendarView = findViewById(R.id.calendarView);

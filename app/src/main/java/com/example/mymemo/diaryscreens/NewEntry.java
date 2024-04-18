@@ -1,13 +1,9 @@
 package com.example.mymemo.diaryscreens;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,9 +14,6 @@ import com.example.mymemo.AppDatabase;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import com.example.mymemo.User;
-import com.example.mymemo.homescreens.HomeActivity;
-
-import java.util.Calendar;
 
 
 public class NewEntry extends AppCompatActivity {

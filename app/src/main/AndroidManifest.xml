@@ -29,7 +29,7 @@
             android:name=".RecordingDiary"
             android:exported="false" />
         <activity
-            android:name=".homescreens.HomeActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Register"
@@ -49,6 +49,9 @@
         <activity
             android:name=".diaryscreens.NewEntry"
             android:exported="false" />
+        <activity android:name=".Calendar"
+            android:exported="false"/>
+
 
 <!--        <activity-->
 <!--            android:name=".galleryscreens.GalleryActivity"-->
