@@ -49,4 +49,5 @@
     <string name="enter_picture_title">Enter picture title</string>
     <string name="diary_title">Diary Title</string>
     <string name="title">Title</string>
+    <string name="date">Date</string>
 </resources>

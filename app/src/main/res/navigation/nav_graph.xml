@@ -7,14 +7,12 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.mymemo.homescreens.CategoryFragment"
         android:label="Home"
         tools:layout="@layout/activity_home"
         tools:ignore="HardcodedText" />
 
     <fragment
         android:id="@+id/add"
-        android:name="com.example.mymemo.diaryscreens.AddFragment"
         android:label="Add"
         tools:layout="@layout/activity_diary"
         tools:ignore="HardcodedText" />
