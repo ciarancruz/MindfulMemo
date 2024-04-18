@@ -41,11 +41,26 @@
         app:layout_constraintVertical_bias="0.122" />
 
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/search_bg"
+        android:focusable="false"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search.."
+        app:searchHintIcon="@null"
+        app:searchIcon="@drawable/baseline_search" />
 
     <ImageView
         android:id="@+id/diaryimage"
-        android:layout_width="134dp"
-        android:layout_height="92dp"
+        android:layout_width="123dp"
+        android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
@@ -66,12 +81,12 @@
 <!--        app:srcCompat="@drawable/heart" -->
     <ImageButton
         android:id="@+id/plusadd"
-        android:layout_width="100dp"
-        android:layout_height="90dp"
+        android:layout_width="71dp"
+        android:layout_height="70dp"
         android:backgroundTint="#FEEED9"
-        android:scaleType="fitCenter"
-        android:onClick="navigateMood"
         android:contentDescription="@string/add_entry"
+        android:onClick="navigateMood"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.986"
@@ -82,12 +97,12 @@
 
     <ImageButton
         android:id="@+id/backbutton"
-        android:layout_width="105dp"
-        android:layout_height="87dp"
+        android:layout_width="73dp"
+        android:layout_height="75dp"
         android:backgroundTint="#FEEED9"
-        android:scaleType="fitCenter"
-        android:onClick="navigateToHome"
         android:contentDescription="@string/back_button_description"
+        android:onClick="navigateToHome"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
@@ -98,14 +113,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="377dp"
+        android:layout_height="422dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/plusadd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recentdiary" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
