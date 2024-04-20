@@ -76,11 +76,13 @@ public class PictureDiary extends AppCompatActivity {
                                 Uri selectedImage = data.getData();
                                 imageLink = selectedImage.toString();
                                 imageEdt.setImageURI(selectedImage);
-//                                try {
-//                                    storeImageInDirectory(selectedImage);
-//                                } catch (IOException e) {
-//                                    throw new RuntimeException(e);
-//                                }
+                                Log.d(TAG, "Image link: " + imageLink);
+                                Log.d(TAG, "path image: " + stringToPath(imageLink));
+                                try {
+                                    storeImageInDirectory(selectedImage);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
 
                             }
                         }
@@ -141,8 +143,8 @@ public class PictureDiary extends AppCompatActivity {
     // Convert image link to path
     public String stringToPath(String imageLink) {
         String root = getApplication().getExternalFilesDir("").getAbsolutePath();
-        String id = imageLink.substring(imageLink.length() - 8, imageLink.length() - 4);
-        String link = root + "/pictures/recipes_" + id + ".jpeg";
+        String id = imageLink.substring(imageLink.length() - 4, imageLink.length());
+        String link = root + "/pictures/diaryPic_" + id + ".jpeg";
         return link;
     }
 
@@ -163,7 +165,7 @@ public class PictureDiary extends AppCompatActivity {
         );
 
         String stringImageId = imageURI.toString();
-        String id = stringImageId.substring(stringImageId.length() - 8, stringImageId.length() - 4);
+        String id = stringImageId.substring(stringImageId.length() - 4, stringImageId.length());
         Log.d(TAG, "Last 4: " + id);
 
         // Create file to store image
@@ -179,5 +181,13 @@ public class PictureDiary extends AppCompatActivity {
         Log.d(TAG, "Out:" + out);
 
         out.close();
+    }
+
+    public void saveImage(View view) {
+        long currentTimeMillis = System.currentTimeMillis();
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "New Picture" , "", stringToPath(imageLink), "", user.getUser_id());
+        db.diaryEntryDao().insertDiaryEntry(newDiary);
+        Log.d(TAG, "Image saved");
+        finish();
     }
 }
