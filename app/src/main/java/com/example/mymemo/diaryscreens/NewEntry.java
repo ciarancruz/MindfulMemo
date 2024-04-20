@@ -1,13 +1,9 @@
 package com.example.mymemo.diaryscreens;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,14 +14,12 @@ import com.example.mymemo.AppDatabase;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import com.example.mymemo.User;
-import com.example.mymemo.homescreens.HomeActivity;
-
-import java.util.Calendar;
 
 
 public class NewEntry extends AppCompatActivity {
     private AppDatabase db;
     private EditText diaryEntry;
+    private EditText title;
     private TextView saveDiary;
     private User user;
 
@@ -50,6 +44,7 @@ public class NewEntry extends AppCompatActivity {
         });
         thread.start();
 
+        title = findViewById(R.id.titleEditText);
         diaryEntry = findViewById(R.id.typetext);
         saveDiary = findViewById(R.id.save_text);
 
@@ -63,10 +58,11 @@ public class NewEntry extends AppCompatActivity {
 
     private void AddDiary()
     {
+        String titleString = title.getText().toString();
         String diary = diaryEntry.getText().toString();
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, diary, user.getUser_id());
+        DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, titleString, diary, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(diaryEntry);
         Log.d("DiaryEntry", "Added diary to database");
 

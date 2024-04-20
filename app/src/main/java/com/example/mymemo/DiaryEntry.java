@@ -34,19 +34,26 @@ public class DiaryEntry {
 
     String text_content;
 
-    String video;
+    String audio;
 
     int user_id;
 
-    @Ignore
-    public DiaryEntry(@NonNull Long date, String title, String text_content, String video) {
+
+    public DiaryEntry(@NonNull Long date, String title, String text_content, int user_id) {
         this.date = date;
         this.title = title;
         this.text_content = text_content;
-        this.video = video;
+        this.user_id = user_id;
     }
 
-
+    @Ignore
+    public DiaryEntry(@NonNull Long date, String title, String text_content, String audio, int user_id) {
+        this.date = date;
+        this.title = title;
+        this.audio = audio;
+        this.user_id = user_id;
+    }
+    @Ignore
     public DiaryEntry(@NonNull Long date, String text_content, int user_id)
     {
         this.date = date;
@@ -78,12 +85,12 @@ public class DiaryEntry {
         this.text_content = text_content;
     }
 
-    public String getVideo() {
-        return video;
+    public String getAudio() {
+        return audio;
     }
 
-    public void setVideo(String video) {
-        this.video = video;
+    public void setAudio(String audio) {
+        this.audio = audio;
     }
 
 }

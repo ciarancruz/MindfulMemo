@@ -1,21 +1,17 @@
-package com.example.mymemo.homescreens;
+package com.example.mymemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mymemo.AppDatabase;
-import com.example.mymemo.PictureDiary;
-import com.example.mymemo.R;
-import com.example.mymemo.RecordingDiary;
-import com.example.mymemo.User;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -38,6 +34,29 @@ public class HomeActivity extends AppCompatActivity {
         micImageView = findViewById(R.id.mic);
         cameraImageview = findViewById(R.id.camera);
         helloText = findViewById(R.id.hello);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.allDiary) {
+                startActivity(new Intent(getApplicationContext(), MyDiaryMain.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.calender) {
+                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
+
 
         // Get user id
         Thread thread = new Thread(new Runnable() {
@@ -89,14 +108,15 @@ public class HomeActivity extends AppCompatActivity {
 
     public void navMic(){
         Intent intent = new Intent(this, RecordingDiary.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
-
     }
 
     public void navPic(){
         Intent intent = new Intent(this, PictureDiary.class);
         startActivity(intent);
-
     }
+
+
 
 }

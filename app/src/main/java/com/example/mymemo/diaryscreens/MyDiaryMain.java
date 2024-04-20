@@ -1,17 +1,16 @@
 package com.example.mymemo.diaryscreens;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.mymemo.Calendar;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import android.content.Intent;
@@ -22,10 +21,8 @@ import android.widget.Toast;
 import com.example.mymemo.AppDatabase;
 import com.example.mymemo.User;
 import com.example.mymemo.ViewModal;
-import com.example.mymemo.homescreens.HomeActivity;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.mymemo.HomeActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyDiaryMain extends AppCompatActivity {
     private User user;
@@ -40,6 +37,27 @@ public class MyDiaryMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
+        bottomNavigationView.setSelectedItemId(R.id.allDiary);
+
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.allDiary) {
+                return true;
+            } else if (itemId == R.id.calender) {
+                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
 
         // Instantiate database
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")

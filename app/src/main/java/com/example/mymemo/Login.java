@@ -1,7 +1,5 @@
 package com.example.mymemo;
 
-import com.example.mymemo.homescreens.HomeActivity;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

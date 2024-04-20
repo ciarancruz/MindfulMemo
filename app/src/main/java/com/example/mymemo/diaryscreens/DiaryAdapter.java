@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder> {
 
@@ -39,7 +42,21 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         DiaryEntry data = dataList.get(position);
-        holder.textView.setText(data.getText_content());
+        holder.textView.setText(data.getTitle());
+        holder.dateText.setText(getCurrentDate());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the edit / preview of the diary.
+            }
+        });
+    }
+
+    private String getCurrentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 
     @Override
@@ -58,10 +75,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        TextView dateText;
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.text_view);
+            dateText = itemView.findViewById(R.id.date_text);
         }
     }
 }
