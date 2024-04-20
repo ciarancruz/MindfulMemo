@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
                     else {
                         Login.this.runOnUiThread(new Runnable() {
                             public void run() {
-                                Toast.makeText(Login.this, "Incorrect Password", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Login.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -97,7 +97,7 @@ public class Login extends AppCompatActivity {
                 else {
                     Login.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            Toast.makeText(Login.this, "Could not find user", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, "Could not find user", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

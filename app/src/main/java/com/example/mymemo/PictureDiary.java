@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
@@ -37,6 +39,8 @@ public class PictureDiary extends AppCompatActivity {
     // Variables for images
     private String imageLink = "";
     private ImageView imageEdt;
+    private EditText textEdt;
+    private String title;
 
 //    // Request Camera
 //    ActivityResultLauncher<Intent> cameraRequestLauncher =
@@ -96,6 +100,7 @@ public class PictureDiary extends AppCompatActivity {
 
         backImageView = findViewById(R.id.backbtn1);
         imageEdt = (ImageView) findViewById(R.id.insertedImage);
+        textEdt = findViewById(R.id.titleEditText);
 
         // Instantiate db
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
@@ -184,10 +189,17 @@ public class PictureDiary extends AppCompatActivity {
     }
 
     public void saveImage(View view) {
-        long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "New Picture" , "", stringToPath(imageLink), "", user.getUser_id());
-        db.diaryEntryDao().insertDiaryEntry(newDiary);
-        Log.d(TAG, "Image saved");
-        finish();
+        title = textEdt.getText().toString();
+        if (!(title.isEmpty())) {
+            long currentTimeMillis = System.currentTimeMillis();
+            DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, "", stringToPath(imageLink), "", user.getUser_id());
+            db.diaryEntryDao().insertDiaryEntry(newDiary);
+            Log.d(TAG, "Image saved");
+            finish();
+        }
+        else {
+            Toast.makeText(PictureDiary.this, "Please enter a title", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
