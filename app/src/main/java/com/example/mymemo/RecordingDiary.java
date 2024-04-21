@@ -64,7 +64,7 @@ public class RecordingDiary extends AppCompatActivity {
                         ActivityCompat.requestPermissions(RecordingDiary.this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
                     }
                     else {
-                        startRecording("recorded_audio.mp3");
+                        startRecording();
                         isRecording = true;
                     }
                 } else {
@@ -133,9 +133,9 @@ public class RecordingDiary extends AppCompatActivity {
         };
     }
 
-    private void startRecording(String fileName) {
-        outputFile = getExternalCacheDir().getAbsolutePath();
-        outputFile += "/" + fileName;
+    private void startRecording() {
+        String fileName = "Recording_" + System.currentTimeMillis() + ".mp3";
+        outputFile = getExternalCacheDir().getAbsolutePath() + "/" + fileName;
 
         long currentTimeMillis = System.currentTimeMillis();
         DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", null, null, outputFile, user.getUser_id());
