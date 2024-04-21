@@ -22,6 +22,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.room.Room;
 
+import com.example.mymemo.diaryscreens.Mood;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
 
 import java.io.File;
@@ -201,6 +202,9 @@ public class PictureDiary extends AppCompatActivity {
             DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, null, stringToPath(imageLink), null, mood, user.getUser_id());
             db.diaryEntryDao().insertDiaryEntry(newDiary);
             Log.d(TAG, "Image saved");
+            Intent intent = new Intent(this, MyDiaryMain.class);
+            intent.putExtra("user", user.getUser_id());
+            startActivity(intent);
             finish();
         }
         else {
