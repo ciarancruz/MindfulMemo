@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.mymemo.Calendar;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import android.content.Intent;
@@ -22,7 +21,6 @@ import com.example.mymemo.AppDatabase;
 import com.example.mymemo.User;
 import com.example.mymemo.ViewModal;
 import com.example.mymemo.HomeActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyDiaryMain extends AppCompatActivity {
     private User user;
@@ -30,6 +28,7 @@ public class MyDiaryMain extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AppDatabase db;
     private ViewModal viewModal;
+    private final String TAG = "Debug";
 
     // User Model
     private int user_ID;
@@ -112,12 +111,16 @@ public class MyDiaryMain extends AppCompatActivity {
         }).attachToRecyclerView(recyclerView);
 
 
-//        adapter.setOnItemClickListener(new DiaryAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(DiaryEntry model) {
-//                Intent intent = new Intent(MyDiaryMain.this, )
-//            }
-//
+        adapter.setOnItemClickListener(new DiaryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int model) {
+                Log.d(TAG, "onItemClick: Working");
+                Intent intent = new Intent(MyDiaryMain.this, EditDiary.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
+                finish();
+            }
+
 //            @Override
 //            public void onItemClick(RecipeModel model) {
 //                // Passing data to new edit activity
@@ -131,7 +134,7 @@ public class MyDiaryMain extends AppCompatActivity {
 //
 //                editRecipeLauncher.launch(intent);
 //            }
-//        });
+        });
     }
 
     @Override

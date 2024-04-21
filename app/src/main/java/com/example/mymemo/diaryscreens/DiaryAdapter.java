@@ -3,7 +3,6 @@ package com.example.mymemo.diaryscreens;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,11 +46,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
         DiaryEntry data = dataList.get(position);
         holder.textView.setText(data.getTitle());
         holder.dateText.setText(getCurrentDate());
+        DiaryEntry diaryEntry = dataList.get(position);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to the edit / preview of the diary.
+                if (listener != null) {
+                    listener.onItemClick(position);
+                }
             }
         });
     }
@@ -88,7 +90,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClick(DiaryEntry model);
+        void onItemClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
