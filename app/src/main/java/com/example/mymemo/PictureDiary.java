@@ -41,6 +41,7 @@ public class PictureDiary extends AppCompatActivity {
     private ImageView imageEdt;
     private EditText textEdt;
     private String title;
+    private int mood;
 
 //    // Request Camera
 //    ActivityResultLauncher<Intent> cameraRequestLauncher =
@@ -108,10 +109,10 @@ public class PictureDiary extends AppCompatActivity {
                 .build();
 
         // Get user id
+        Intent intent = getIntent();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Intent intent = getIntent();
                 int userID = intent.getIntExtra("user",-1);
                 user = AppDatabase.getInstance(getApplicationContext())
                         .userDao()
@@ -120,11 +121,16 @@ public class PictureDiary extends AppCompatActivity {
         });
         thread.start();
 
+        mood = intent.getIntExtra("mood", -1);
+
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(PictureDiary.this, HomeActivity.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
-            } // Use finish, a lot more efficient
+            }
         });
 
     }
@@ -192,7 +198,7 @@ public class PictureDiary extends AppCompatActivity {
         title = textEdt.getText().toString();
         if (!(title.isEmpty())) {
             long currentTimeMillis = System.currentTimeMillis();
-            DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, null, stringToPath(imageLink), null, user.getUser_id());
+            DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, null, stringToPath(imageLink), null, mood, user.getUser_id());
             db.diaryEntryDao().insertDiaryEntry(newDiary);
             Log.d(TAG, "Image saved");
             finish();
