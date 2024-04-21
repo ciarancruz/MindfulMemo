@@ -2,19 +2,25 @@ package com.example.mymemo.diaryscreens;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mymemo.AppDatabase;
 import com.example.mymemo.HomeActivity;
+import com.example.mymemo.PictureDiary;
 import com.example.mymemo.R;
+import com.example.mymemo.RecordingDiary;
 import com.example.mymemo.User;
+
+import java.io.IOException;
 
 public class EditDiary extends AppCompatActivity {
 
@@ -71,6 +77,12 @@ public class EditDiary extends AppCompatActivity {
 
         currentDiary();
 
+        diaryAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playAudio(audio);
+            }
+        });
 
 
     }
@@ -134,5 +146,17 @@ public class EditDiary extends AppCompatActivity {
         intent.putExtra("user", user.getUser_id());
         startActivity(intent);
         finish();
+    }
+
+    private void playAudio(String filePath) {
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource(filePath);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+            Toast.makeText(this, "Playing audio", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

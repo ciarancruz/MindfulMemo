@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class RecordingDiary extends AppCompatActivity {
     private Runnable timerRunnable;
     private long startTimeMillis;
     private int mood;
+    private EditText recordingTitle;
 
 
     @Override
@@ -54,6 +56,7 @@ public class RecordingDiary extends AppCompatActivity {
         pauseBtn = findViewById(R.id.pause_btn);
         backBtn = findViewById(R.id.backbtn1);
         timer = findViewById(R.id.recording_time);
+        recordingTitle = findViewById(R.id.recording_title_edittext);
 
         recordMic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +148,7 @@ public class RecordingDiary extends AppCompatActivity {
         outputFile = getExternalCacheDir().getAbsolutePath() + "/" + fileName;
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", null, null, outputFile, mood, user.getUser_id());
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, recordingTitle.getText().toString(), null, null, outputFile, mood, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(newDiary);
 
         mediaRecorder = new MediaRecorder();
