@@ -52,7 +52,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onItemClick(position);
+                    listener.onItemClick(diaryEntry);
                 }
             }
         });
@@ -90,7 +90,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(DiaryEntry diary);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

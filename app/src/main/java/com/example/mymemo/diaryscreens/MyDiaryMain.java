@@ -63,13 +63,11 @@ public class MyDiaryMain extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        Log.d("Debug", "onCreate: Called");
 
         // Get user id
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d("Debug", "in thread: called");
                 Intent intent = getIntent();
                 int userID = intent.getIntExtra("user",-1);
                 user = AppDatabase.getInstance(getApplicationContext())
@@ -113,10 +111,13 @@ public class MyDiaryMain extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new DiaryAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int model) {
-                Log.d(TAG, "onItemClick: Working");
+            public void onItemClick(DiaryEntry diary) {
                 Intent intent = new Intent(MyDiaryMain.this, EditDiary.class);
                 intent.putExtra("user", user.getUser_id());
+                intent.putExtra("diaryTitle", diary.getTitle());
+                intent.putExtra("diaryText", diary.getText_content());
+                intent.putExtra("diaryRecording", diary.getAudio());
+                intent.putExtra("diaryImage", diary.getImage());
                 startActivity(intent);
                 finish();
             }
@@ -142,8 +143,6 @@ public class MyDiaryMain extends AppCompatActivity {
         super.onResume();
 
         viewModal.getDiaryByUser(user_ID).observe(this, diaryEntries -> {
-            Log.d("Debug", "onCreate: userID "+ user_ID);
-            Log.d("Debug", "onCreate: diary "+ diaryEntries.size());
             adapter.setDataList(diaryEntries);
         });
 
