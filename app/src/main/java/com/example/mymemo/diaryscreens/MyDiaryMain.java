@@ -37,7 +37,6 @@ public class MyDiaryMain extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AppDatabase db;
     private ViewModal viewModal;
-    private final String TAG = "Debug";
     private SearchView searchView;
 
     // User Model
