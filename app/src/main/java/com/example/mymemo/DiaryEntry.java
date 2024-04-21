@@ -36,6 +36,8 @@ public class DiaryEntry {
 
     String audio;
 
+    String image;
+
     int user_id;
 
 
@@ -47,9 +49,11 @@ public class DiaryEntry {
     }
 
     @Ignore
-    public DiaryEntry(@NonNull Long date, String title, String text_content, String audio, int user_id) {
+    public DiaryEntry(@NonNull Long date, String title, String text_content, String image, String audio, int user_id) {
         this.date = date;
         this.title = title;
+        this.text_content = text_content;
+        this.image = image;
         this.audio = audio;
         this.user_id = user_id;
     }
@@ -92,5 +96,14 @@ public class DiaryEntry {
     public void setAudio(String audio) {
         this.audio = audio;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 
 }

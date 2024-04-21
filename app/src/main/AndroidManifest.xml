@@ -49,6 +49,9 @@
         <activity
             android:name=".diaryscreens.NewEntry"
             android:exported="false" />
+        <activity
+            android:name=".diaryscreens.EditDiary"
+            android:exported="false" />
         <activity android:name=".Calendar"
             android:exported="false"/>
 

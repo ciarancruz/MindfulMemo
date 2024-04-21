@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.mymemo.Calendar;
 import com.example.mymemo.DiaryEntry;
 import com.example.mymemo.R;
 import android.content.Intent;
@@ -27,7 +26,6 @@ import com.example.mymemo.AppDatabase;
 import com.example.mymemo.User;
 import com.example.mymemo.ViewModal;
 import com.example.mymemo.HomeActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +36,7 @@ public class MyDiaryMain extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AppDatabase db;
     private ViewModal viewModal;
+    private final String TAG = "Debug";
     private SearchView searchView;
 
     // User Model
@@ -47,6 +46,26 @@ public class MyDiaryMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
 
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
+//        bottomNavigationView.setSelectedItemId(R.id.allDiary);
+//
+//
+//        bottomNavigationView.setOnItemSelectedListener(item -> {
+//            int itemId = item.getItemId();
+//            if (itemId == R.id.home) {
+//                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+//                finish();
+//                return true;
+//            } else if (itemId == R.id.allDiary) {
+//                return true;
+//            } else if (itemId == R.id.calender) {
+//                startActivity(new Intent(getApplicationContext(), Calendar.class));
+//                finish();
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setSelectedItemId(R.id.allDiary);
         searchView = findViewById(R.id.search);
@@ -89,12 +108,11 @@ public class MyDiaryMain extends AppCompatActivity {
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
                 .allowMainThreadQueries()
                 .build();
-
+      
         // Get user id
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d("Debug", "in thread: called");
                 Intent intent = getIntent();
                 int userID = intent.getIntExtra("user",-1);
                 user = AppDatabase.getInstance(getApplicationContext())
@@ -111,6 +129,7 @@ public class MyDiaryMain extends AppCompatActivity {
         adapter = new DiaryAdapter();
         recyclerView.setAdapter(adapter);
         viewModal = new ViewModelProvider(this).get(ViewModal.class);
+
 
 
         // Deleting entries
@@ -134,6 +153,35 @@ public class MyDiaryMain extends AppCompatActivity {
                 Toast.makeText(MyDiaryMain.this, "Diary deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
+
+
+        adapter.setOnItemClickListener(new DiaryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DiaryEntry diary) {
+                Intent intent = new Intent(MyDiaryMain.this, EditDiary.class);
+                intent.putExtra("user", user.getUser_id());
+                intent.putExtra("diaryTitle", diary.getTitle());
+                intent.putExtra("diaryText", diary.getText_content());
+                intent.putExtra("diaryRecording", diary.getAudio());
+                intent.putExtra("diaryImage", diary.getImage());
+                startActivity(intent);
+                finish();
+            }
+
+//            @Override
+//            public void onItemClick(RecipeModel model) {
+//                // Passing data to new edit activity
+//                Intent intent = new Intent(MainActivity.this, EditRecipeActivity.class);
+//                intent.putExtra(AddRecipeActivity.EXTRA_ID, model.getId());
+//                intent.putExtra(AddRecipeActivity.EXTRA_RECIPE_NAME, model.getRecipeName());
+//                intent.putExtra(AddRecipeActivity.EXTRA_DESCRIPTION, model.getDescription());
+//                intent.putExtra(AddRecipeActivity.EXTRA_INGREDIENTS, model.getIngredients());
+//                intent.putExtra(AddRecipeActivity.EXTRA_INSTRUCTIONS, model.getInstructions());
+//                intent.putExtra(AddRecipeActivity.EXTRA_IMAGELINK, model.getImageLink());
+//
+//                editRecipeLauncher.launch(intent);
+//            }
+        });
     }
 
     private void filterList(String input) {
@@ -170,8 +218,6 @@ public class MyDiaryMain extends AppCompatActivity {
         super.onResume();
 
         viewModal.getDiaryByUser(user_ID).observe(this, diaryEntries -> {
-            Log.d("Debug", "onCreate: userID "+ user_ID);
-            Log.d("Debug", "onCreate: diary "+ diaryEntries.size());
             adapter.setDataList(diaryEntries);
         });
     }

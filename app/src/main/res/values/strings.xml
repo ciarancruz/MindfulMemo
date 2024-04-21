@@ -51,5 +51,10 @@
     <string name="title">Title</string>
     <string name="date">Date</string>
     <string name="all_diary">All Diary</string>
+    <string name="text_eds">Diary Title</string>
+    <string name="record_eds">Record Title</string>
+    <string name="picture_eds">Picture Title</string>
+    <string name="cancel_eds">CANCEL</string>
+    <string name="save_eds">SAVE</string>
     <string name="moods">Mood</string>
 </resources>

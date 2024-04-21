@@ -45,7 +45,9 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.allDiary) {
-                startActivity(new Intent(getApplicationContext(), MyDiaryMain.class));
+                Intent intent = new Intent(this, MyDiaryMain.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
                 return true;
             } else if (itemId == R.id.calender) {
@@ -103,6 +105,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyDiaryMain.class);
         intent.putExtra("user", user.getUser_id());
         startActivity(intent);
+        finish();
 
     }
 
@@ -114,6 +117,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void navPic(){
         Intent intent = new Intent(this, PictureDiary.class);
+        intent.putExtra("user", user.getUser_id());
         startActivity(intent);
     }
 

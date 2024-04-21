@@ -19,6 +19,8 @@ import java.util.Locale;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder> {
 
+    private static OnItemClickListener listener;
+
     // Test Data
     private List<DiaryEntry> dataList = new ArrayList<>();
 
@@ -44,11 +46,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
         DiaryEntry data = dataList.get(position);
         holder.textView.setText(data.getTitle());
         holder.dateText.setText(getCurrentDate());
+        DiaryEntry diaryEntry = dataList.get(position);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate to the edit / preview of the diary.
+                if (listener != null) {
+                    listener.onItemClick(diaryEntry);
+                }
             }
         });
     }
@@ -83,4 +88,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
             dateText = itemView.findViewById(R.id.date_text);
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(DiaryEntry diary);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+
 }
