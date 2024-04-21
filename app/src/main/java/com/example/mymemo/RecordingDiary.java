@@ -37,6 +37,7 @@ public class RecordingDiary extends AppCompatActivity {
     private Handler handler;
     private Runnable timerRunnable;
     private long startTimeMillis;
+    private int mood;
 
 
     @Override
@@ -100,14 +101,18 @@ public class RecordingDiary extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RecordingDiary.this, HomeActivity.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
             }
         });
 
+        Intent intent = getIntent();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Intent intent = getIntent();
+
                 int userID = intent.getIntExtra("user",-1);
                 user = AppDatabase.getInstance(getApplicationContext())
                         .userDao()
@@ -115,6 +120,8 @@ public class RecordingDiary extends AppCompatActivity {
             }
         });
         thread.start();
+
+        mood = intent.getIntExtra("mood", -1);
 
         handler = new Handler();
         timerRunnable = new Runnable() {
@@ -138,7 +145,7 @@ public class RecordingDiary extends AppCompatActivity {
         outputFile = getExternalCacheDir().getAbsolutePath() + "/" + fileName;
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", null, null, outputFile, user.getUser_id());
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", null, null, outputFile, mood, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(newDiary);
 
         mediaRecorder = new MediaRecorder();

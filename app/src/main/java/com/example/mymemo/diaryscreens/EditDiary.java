@@ -24,6 +24,7 @@ public class EditDiary extends AppCompatActivity {
     private String textContent;
     private String image;
     private String audio;
+    private int mood;
 
     private TextView titleView;
     private EditText diaryContent;
@@ -31,6 +32,7 @@ public class EditDiary extends AppCompatActivity {
     private ImageView diaryAudio;
     private TextView diaryImageTitle;
     private ImageView diaryImage;
+    private ImageView diaryMood;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +60,14 @@ public class EditDiary extends AppCompatActivity {
         textContent = intent.getStringExtra("diaryText");
         image = intent.getStringExtra("diaryImage");
         audio = intent.getStringExtra("diaryRecording");
+        mood = intent.getIntExtra("diaryMood", -1);
+
 
         Log.d(TAG, "In diary title: " + title);
         Log.d(TAG, "In diary text: " + textContent);
         Log.d(TAG, "In diary image: " + image);
         Log.d(TAG, "In diary audio: " + audio);
+        Log.d(TAG, "In diary mood: " + mood);
 
         currentDiary();
 
@@ -77,11 +82,25 @@ public class EditDiary extends AppCompatActivity {
         diaryImage = (ImageView) findViewById(R.id.diaryImages);
         diaryAudioTitle = findViewById(R.id.textView2);
         diaryImageTitle = findViewById(R.id.textView3);
+        diaryMood = (ImageView) findViewById(R.id.moodImage);
 
     }
 
     private void currentDiary() {
         titleView.setText(title);
+        if(mood == 0) {
+            diaryMood.setImageResource(R.drawable.verysad);
+        }
+        else if(mood == 1) {
+            diaryMood.setImageResource(R.drawable.okay);
+        }
+        else if (mood == 2) {
+            diaryMood.setImageResource(R.drawable.happy);
+        }
+        else {
+            diaryMood.setVisibility(View.GONE);
+        }
+
         if(textContent != null) {
             diaryContent.setText(textContent);
         }

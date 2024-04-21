@@ -127,6 +127,7 @@ public class MyDiaryMain extends AppCompatActivity {
                 intent.putExtra("diaryText", diary.getText_content());
                 intent.putExtra("diaryRecording", diary.getAudio());
                 intent.putExtra("diaryImage", diary.getImage());
+                intent.putExtra("diaryMood", diary.getMood());
                 startActivity(intent);
                 finish();
             }
@@ -181,6 +182,7 @@ public class MyDiaryMain extends AppCompatActivity {
     public void navigateMood(View view) {
         Intent intent = new Intent(this, Mood.class);
         intent.putExtra("user", user.getUser_id());
+        intent.putExtra("page", 0);
         startActivity(intent);
     }
 }
