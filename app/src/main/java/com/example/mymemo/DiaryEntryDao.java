@@ -29,4 +29,7 @@ public interface DiaryEntryDao {
 
     @Query("Select * from DiaryEntry where user_id = :user_id")
     LiveData<List<DiaryEntry>> getAllDiaries(int user_id);
+
+    @Query("Select * from DiaryEntry where title = :title")
+    DiaryEntry getDiariesByTitle(String title);
 }
