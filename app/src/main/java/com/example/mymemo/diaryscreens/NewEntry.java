@@ -62,7 +62,7 @@ public class NewEntry extends AppCompatActivity {
         String diary = diaryEntry.getText().toString();
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, titleString, diary, user.getUser_id());
+        DiaryEntry diaryEntry = new DiaryEntry(currentTimeMillis, titleString, diary, null, null, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(diaryEntry);
         Log.d("DiaryEntry", "Added diary to database");
 

@@ -138,7 +138,7 @@ public class RecordingDiary extends AppCompatActivity {
         outputFile += "/" + fileName;
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", "", "", outputFile, user.getUser_id());
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", null, null, outputFile, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(newDiary);
 
         mediaRecorder = new MediaRecorder();

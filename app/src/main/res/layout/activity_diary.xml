@@ -92,18 +92,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/peach_beige"
-        app:itemIconTint="@drawable/item_selector"
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNavView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/peach_beige"-->
+<!--        app:itemIconTint="@drawable/item_selector"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.997"-->
+<!--        app:menu="@menu/bottom_nav_menu"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="-46dp" />-->
+
+    <ImageButton
+        android:id="@+id/plusadd"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:backgroundTint="#FEEED9"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/plus_add_btn"
+        android:onClick="navigateMood"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.986"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997"
-        app:menu="@menu/bottom_nav_menu"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-46dp" />
+        app:layout_constraintVertical_bias="0.99"
+        app:srcCompat="@drawable/blackplus" />
+
+    <ImageButton
+        android:id="@+id/backbutton"
+        android:layout_width="105dp"
+        android:layout_height="87dp"
+        android:backgroundTint="#FEEED9"
+        android:scaleType="fitCenter"
+        android:onClick="navigateToHome"
+        android:contentDescription="@string/back_button_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/backbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

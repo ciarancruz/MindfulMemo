@@ -38,26 +38,26 @@ public class MyDiaryMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
-        bottomNavigationView.setSelectedItemId(R.id.allDiary);
-
-
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.allDiary) {
-                return true;
-            } else if (itemId == R.id.calender) {
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
-                finish();
-                return true;
-            } else {
-                return false;
-            }
-        });
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
+//        bottomNavigationView.setSelectedItemId(R.id.allDiary);
+//
+//
+//        bottomNavigationView.setOnItemSelectedListener(item -> {
+//            int itemId = item.getItemId();
+//            if (itemId == R.id.home) {
+//                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+//                finish();
+//                return true;
+//            } else if (itemId == R.id.allDiary) {
+//                return true;
+//            } else if (itemId == R.id.calender) {
+//                startActivity(new Intent(getApplicationContext(), Calendar.class));
+//                finish();
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        });
 
         // Instantiate database
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
@@ -89,7 +89,7 @@ public class MyDiaryMain extends AppCompatActivity {
         viewModal = new ViewModelProvider(this).get(ViewModal.class);
 
 
-        // Deleting Recipes
+        // Deleting Diaries
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -110,6 +110,28 @@ public class MyDiaryMain extends AppCompatActivity {
                 Toast.makeText(MyDiaryMain.this, "Diary deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
+
+
+//        adapter.setOnItemClickListener(new DiaryAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(DiaryEntry model) {
+//                Intent intent = new Intent(MyDiaryMain.this, )
+//            }
+//
+//            @Override
+//            public void onItemClick(RecipeModel model) {
+//                // Passing data to new edit activity
+//                Intent intent = new Intent(MainActivity.this, EditRecipeActivity.class);
+//                intent.putExtra(AddRecipeActivity.EXTRA_ID, model.getId());
+//                intent.putExtra(AddRecipeActivity.EXTRA_RECIPE_NAME, model.getRecipeName());
+//                intent.putExtra(AddRecipeActivity.EXTRA_DESCRIPTION, model.getDescription());
+//                intent.putExtra(AddRecipeActivity.EXTRA_INGREDIENTS, model.getIngredients());
+//                intent.putExtra(AddRecipeActivity.EXTRA_INSTRUCTIONS, model.getInstructions());
+//                intent.putExtra(AddRecipeActivity.EXTRA_IMAGELINK, model.getImageLink());
+//
+//                editRecipeLauncher.launch(intent);
+//            }
+//        });
     }
 
     @Override

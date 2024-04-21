@@ -3,6 +3,7 @@ package com.example.mymemo.diaryscreens;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder> {
+
+    private static OnItemClickListener listener;
 
     // Test Data
     private List<DiaryEntry> dataList = new ArrayList<>();
@@ -83,4 +86,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
             dateText = itemView.findViewById(R.id.date_text);
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(DiaryEntry model);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+
 }

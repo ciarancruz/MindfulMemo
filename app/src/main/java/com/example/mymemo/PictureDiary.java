@@ -192,7 +192,7 @@ public class PictureDiary extends AppCompatActivity {
         title = textEdt.getText().toString();
         if (!(title.isEmpty())) {
             long currentTimeMillis = System.currentTimeMillis();
-            DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, "", stringToPath(imageLink), "", user.getUser_id());
+            DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, null, stringToPath(imageLink), null, user.getUser_id());
             db.diaryEntryDao().insertDiaryEntry(newDiary);
             Log.d(TAG, "Image saved");
             finish();
