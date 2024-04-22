@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calendar extends AppCompatActivity {
-
     private CalendarView calendarView;
     private ListView entryListView;
     private TextView noEntriesTextView;
@@ -52,10 +52,13 @@ public class Calendar extends AppCompatActivity {
         // Initialize views
         calendarView = findViewById(R.id.calendarView);
         entryListView = findViewById(R.id.entryListView);
-        //noEntriesTextView = findViewById(R.id.noEntriesTextView);
+        noEntriesTextView = findViewById(R.id.noEntriesTextView); // Initialize noEntriesTextView here
 
         // Hide the entry list initially
         entryListView.setVisibility(View.GONE);
+        if (noEntriesTextView != null) {
+            noEntriesTextView.setVisibility(View.GONE);
+        }
 
         // Set listener for calendar item click
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -73,8 +76,7 @@ public class Calendar extends AppCompatActivity {
 
         if (entries.isEmpty()) {
             // Show a message if there are no entries for the selected date
-            entryListView.setVisibility(View.GONE);
-            noEntriesTextView.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "No diaries found for selected date", Toast.LENGTH_SHORT).show();
         } else {
             // Display the entries in the ListView
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, entries);
