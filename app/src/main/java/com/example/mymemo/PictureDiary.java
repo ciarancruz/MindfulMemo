@@ -44,29 +44,29 @@ public class PictureDiary extends AppCompatActivity {
     private String title;
     private int mood;
 
-//    // Request Camera
-//    ActivityResultLauncher<Intent> cameraRequestLauncher =
-//            registerForActivityResult(
-//                    new ActivityResultContracts.StartActivityForResult(),
-//                    new ActivityResultCallback<ActivityResult>() {
-//                        @Override
-//                        public void onActivityResult(ActivityResult activityResult) {
-//                            int resultCode = activityResult.getResultCode();
-//                            Intent data = activityResult.getData();
-//
-//                            // Reference: https://developer.android.com/training/camera-deprecated/photobasics
-//                            if (resultCode == RESULT_OK) {
-//                                Bundle extras = data.getExtras();
-//                                Bitmap image = (Bitmap)extras.get("data");
-//                                Log.d("Debug", "Image link/path" + image);
-//                                imageEdt.setImageBitmap(image);
-//                                bitmapToURI(image);
-//
-//                            }
-//                            // End reference
-//                        }
-//                    }
-//            );
+    // Request Camera
+    ActivityResultLauncher<Intent> cameraRequestLauncher =
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult activityResult) {
+                            int resultCode = activityResult.getResultCode();
+                            Intent data = activityResult.getData();
+
+                            // Reference: https://developer.android.com/training/camera-deprecated/photobasics
+                            if (resultCode == RESULT_OK) {
+                                Bundle extras = data.getExtras();
+                                Bitmap image = (Bitmap)extras.get("data");
+                                Log.d("Debug", "Image link/path" + image);
+                                imageEdt.setImageBitmap(image);
+                                bitmapToURI(image);
+
+                            }
+                            // End reference
+                        }
+                    }
+            );
 
     // Open gallery
     ActivityResultLauncher<Intent> openGalleryLauncher =
@@ -143,14 +143,14 @@ public class PictureDiary extends AppCompatActivity {
         intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         openGalleryLauncher.launch(Intent.createChooser(intent, "Select Picture"));
     }
-//
-//    // Picking a photo from gallery https://developer.android.com/training/data-storage/shared/documents-files
-//    public void openGallery() {
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-//        openGalleryLauncher.launch(Intent.createChooser(intent, "Select Picture"));
-//    }
+
+    // Taking a photo Reference: https://developer.android.com/training/camera-deprecated/photobasics
+    public void takePhoto(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            cameraRequestLauncher.launch(intent);
+        }
+    }
 
     // Convert image link to path
     public String stringToPath(String imageLink) {
@@ -193,6 +193,24 @@ public class PictureDiary extends AppCompatActivity {
         Log.d(TAG, "Out:" + out);
 
         out.close();
+    }
+
+    private void bitmapToURI (Bitmap imageBitmap) {
+        File tempFile = new File(getCacheDir(), "temp.jpeg");
+        try {
+            FileOutputStream fos = new FileOutputStream(tempFile);
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Uri uri = Uri.fromFile(tempFile);
+        imageLink = uri.toString();
+        try {
+            storeImageInDirectory(uri);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void saveImage(View view) {
