@@ -116,13 +116,15 @@ public class MyDiaryMain extends AppCompatActivity {
                 db.diaryEntryDao().deleteDiaryEntry(deletedDiary);
 
                 // Delete file from folder
-                File imageFile = new File(deletedDiary.getImage());
-                Log.d(TAG, "Image is " + deletedDiary.getImage());
-                boolean deleted = imageFile.delete();
-                if (deleted) {
-                    Log.d(TAG, "Deleted image successfully ");
-                } else {
-                    Log.d(TAG, "Failed to delete image ");
+                if (deletedDiary.getImage() != null){
+                    File imageFile = new File(deletedDiary.getImage());
+                    Log.d(TAG, "Image is " + deletedDiary.getImage());
+                    boolean deleted = imageFile.delete();
+                    if (deleted) {
+                        Log.d(TAG, "Deleted image successfully ");
+                    } else {
+                        Log.d(TAG, "Failed to delete image ");
+                    }
                 }
                 Toast.makeText(MyDiaryMain.this, "Diary deleted", Toast.LENGTH_SHORT).show();
             }

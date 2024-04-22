@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/grape_nut_font"
-        android:text="@string/recording_file_name"
+        android:hint="Recording File Name"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
