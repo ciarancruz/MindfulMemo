@@ -45,7 +45,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         DiaryEntry data = dataList.get(position);
         holder.textView.setText(data.getTitle());
-        holder.dateText.setText(getCurrentDate());
+        holder.dateText.setText(getDate(data.getDate()));
         DiaryEntry diaryEntry = dataList.get(position);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +58,11 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
         });
     }
 
-    private String getCurrentDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
+    private String getDate(long date) {
+        Date newDate = new Date(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+        String formattedDate = dateFormat.format(newDate);
+        return formattedDate;
     }
 
     @Override

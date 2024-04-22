@@ -115,4 +115,12 @@ public class DiaryEntry {
     public void setMood(int mood) {
         this.mood = mood;
     }
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
 }

@@ -184,6 +184,7 @@ public class MyDiaryMain extends AppCompatActivity {
         intent.putExtra("user", user.getUser_id());
         intent.putExtra("page", 0);
         startActivity(intent);
+        finish();
     }
 }
 
