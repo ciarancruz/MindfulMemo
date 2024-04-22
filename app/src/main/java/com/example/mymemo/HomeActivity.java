@@ -42,8 +42,6 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
                 return true;
             } else if (itemId == R.id.allDiary) {
                 Intent intent = new Intent(this, MyDiaryMain.class);

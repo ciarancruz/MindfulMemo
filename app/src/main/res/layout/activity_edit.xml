@@ -68,35 +68,37 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="0.852" />-->
 
-    <TextView
+    <Button
         android:id="@+id/cancel_edit"
-        android:layout_width="100dp"
-        android:layout_height="41dp"
-        android:text="@string/cancel_eds"
-        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CANCEL"
+        android:background="@drawable/btn_bg"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:onClick="navigateToDiary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982" />
+        app:layout_constraintVertical_bias="0.991"
+        android:onClick="navigateToDiary"/>
 
-    <TextView
+    <Button
         android:id="@+id/save_edit"
-        android:layout_width="73dp"
-        android:layout_height="37dp"
-        android:text="@string/save_eds"
-        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg"
+        android:text="SAVE"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:onClick="navigateToHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.99" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/text_edit"-->
@@ -227,6 +229,17 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
+
+
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="250dp"
+                android:layout_height="430dp"
+                app:srcCompat="@drawable/box"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/textView3"/>
 
             <ImageView
                 android:id="@+id/diaryImages"
