@@ -39,6 +39,7 @@ public class EditDiary extends AppCompatActivity {
     private TextView diaryImageTitle;
     private ImageView diaryImage;
     private ImageView diaryMood;
+    private ImageView boxImage;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +96,7 @@ public class EditDiary extends AppCompatActivity {
         diaryAudioTitle = findViewById(R.id.textView2);
         diaryImageTitle = findViewById(R.id.textView3);
         diaryMood = (ImageView) findViewById(R.id.moodImage);
+        boxImage = (ImageView) findViewById(R.id.imageView6);
 
     }
 
@@ -131,6 +133,8 @@ public class EditDiary extends AppCompatActivity {
         else {
             diaryImageTitle.setVisibility(View.GONE);
             diaryImage.setVisibility(View.GONE);
+            boxImage.setVisibility(View.GONE);
+
         }
         if(audio == null) {
             diaryAudioTitle.setVisibility(View.GONE);
