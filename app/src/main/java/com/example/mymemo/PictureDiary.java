@@ -57,7 +57,6 @@ public class PictureDiary extends AppCompatActivity {
                             if (resultCode == RESULT_OK) {
                                 Bundle extras = data.getExtras();
                                 Bitmap image = (Bitmap)extras.get("data");
-                                Log.d("Debug", "Image link/path " + image);
                                 imageEdt.setImageBitmap(image);
                                 bitmapToURI(image);
 
@@ -81,10 +80,9 @@ public class PictureDiary extends AppCompatActivity {
                                 Uri selectedImage = data.getData();
                                 imageLink = selectedImage.toString();
                                 imageEdt.setImageURI(selectedImage);
-                                Log.d(TAG, "Image link: " + imageLink);
-                                Log.d(TAG, "path image: " + stringToPath(imageLink));
+                                Log.d(TAG, "CHOOSEPHOTO: " + imageLink);
                                 try {
-                                    storeImageInDirectory(selectedImage);
+                                    storeImageInDirectory(selectedImage, 1);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -152,14 +150,14 @@ public class PictureDiary extends AppCompatActivity {
     // Convert image link to path
     public String stringToPath(String imageLink) {
         String root = getApplication().getExternalFilesDir("").getAbsolutePath();
-        String id = imageLink.substring(imageLink.length() - 8, imageLink.length() - 4);
+        String id = imageLink.substring(imageLink.length() - 9, imageLink.length() - 5);
         String link = root + "/pictures/diaryPic_" + id + ".jpeg";
         return link;
     }
 
 
     // Storing image in a directory for future use
-    private void storeImageInDirectory(Uri imageURI) throws IOException {
+    private void storeImageInDirectory(Uri imageURI, int option) throws IOException {
         // Find root folder
         String root = getApplication().getExternalFilesDir("").getAbsolutePath();
         Log.d(TAG, "" + root);
@@ -174,7 +172,14 @@ public class PictureDiary extends AppCompatActivity {
         );
 
         String stringImageId = imageURI.toString();
-        String id = stringImageId.substring(stringImageId.length() - 8, stringImageId.length() - 4);
+        String id;
+        if (option == 1) { // choose photo
+            id = stringImageId.substring(stringImageId.length() - 4, stringImageId.length());
+            imageLink = imageLink + ".jpeg";
+        }
+        else { // take photo
+            id = stringImageId.substring(stringImageId.length() - 9, stringImageId.length() - 5);
+        }
         Log.d(TAG, "Last 4: " + id);
 
         // Create file to store image
@@ -187,13 +192,13 @@ public class PictureDiary extends AppCompatActivity {
                 100,
                 out
         );
-        Log.d(TAG, "Out:" + out);
+        Log.d(TAG, "FINAL IMAGELINK:" + imageLink);
 
         out.close();
     }
 
     private void bitmapToURI (Bitmap imageBitmap) {
-        File tempFile = new File(getCacheDir(), "temp.jpeg");
+        File tempFile = new File(getCacheDir(), System.currentTimeMillis() + ".jpeg");
         try {
             FileOutputStream fos = new FileOutputStream(tempFile);
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
@@ -203,8 +208,9 @@ public class PictureDiary extends AppCompatActivity {
         }
         Uri uri = Uri.fromFile(tempFile);
         imageLink = uri.toString();
+        Log.d(TAG, "TAKEPHOTO: " + imageLink);
         try {
-            storeImageInDirectory(uri);
+            storeImageInDirectory(uri, 0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -216,7 +222,7 @@ public class PictureDiary extends AppCompatActivity {
             long currentTimeMillis = System.currentTimeMillis();
             DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, null, stringToPath(imageLink), null, mood, user.getUser_id());
             db.diaryEntryDao().insertDiaryEntry(newDiary);
-            Log.d(TAG, "Image saved");
+            Log.d(TAG, "Image saved: " + stringToPath(imageLink));
             Intent intent = new Intent(this, MyDiaryMain.class);
             intent.putExtra("user", user.getUser_id());
             startActivity(intent);
