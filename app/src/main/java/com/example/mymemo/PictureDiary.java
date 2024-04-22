@@ -54,11 +54,10 @@ public class PictureDiary extends AppCompatActivity {
                             int resultCode = activityResult.getResultCode();
                             Intent data = activityResult.getData();
 
-                            // Reference: https://developer.android.com/training/camera-deprecated/photobasics
                             if (resultCode == RESULT_OK) {
                                 Bundle extras = data.getExtras();
                                 Bitmap image = (Bitmap)extras.get("data");
-                                Log.d("Debug", "Image link/path" + image);
+                                Log.d("Debug", "Image link/path " + image);
                                 imageEdt.setImageBitmap(image);
                                 bitmapToURI(image);
 
@@ -136,7 +135,6 @@ public class PictureDiary extends AppCompatActivity {
 
     }
 
-    // Taking a photo Reference: https://developer.android.com/training/camera-deprecated/photobasics
     public void pickPhoto(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -144,7 +142,6 @@ public class PictureDiary extends AppCompatActivity {
         openGalleryLauncher.launch(Intent.createChooser(intent, "Select Picture"));
     }
 
-    // Taking a photo Reference: https://developer.android.com/training/camera-deprecated/photobasics
     public void takePhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -155,7 +152,7 @@ public class PictureDiary extends AppCompatActivity {
     // Convert image link to path
     public String stringToPath(String imageLink) {
         String root = getApplication().getExternalFilesDir("").getAbsolutePath();
-        String id = imageLink.substring(imageLink.length() - 4, imageLink.length());
+        String id = imageLink.substring(imageLink.length() - 8, imageLink.length() - 4);
         String link = root + "/pictures/diaryPic_" + id + ".jpeg";
         return link;
     }
@@ -177,7 +174,7 @@ public class PictureDiary extends AppCompatActivity {
         );
 
         String stringImageId = imageURI.toString();
-        String id = stringImageId.substring(stringImageId.length() - 4, stringImageId.length());
+        String id = stringImageId.substring(stringImageId.length() - 8, stringImageId.length() - 4);
         Log.d(TAG, "Last 4: " + id);
 
         // Create file to store image
@@ -215,7 +212,7 @@ public class PictureDiary extends AppCompatActivity {
 
     public void saveImage(View view) {
         title = textEdt.getText().toString();
-        if (!(title.isEmpty())) {
+        if (!(title.isEmpty()) && stringToPath(imageLink) != null) {
             long currentTimeMillis = System.currentTimeMillis();
             DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, title, null, stringToPath(imageLink), null, mood, user.getUser_id());
             db.diaryEntryDao().insertDiaryEntry(newDiary);
@@ -226,7 +223,7 @@ public class PictureDiary extends AppCompatActivity {
             finish();
         }
         else {
-            Toast.makeText(PictureDiary.this, "Please enter a title", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PictureDiary.this, "Please enter a title and insert an image", Toast.LENGTH_SHORT).show();
         }
 
     }

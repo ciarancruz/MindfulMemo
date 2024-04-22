@@ -100,6 +100,8 @@ public class EditDiary extends AppCompatActivity {
 
     private void currentDiary() {
         titleView.setText(title);
+
+        // Mood
         if(mood == 0) {
             diaryMood.setImageResource(R.drawable.verysad);
         }
@@ -113,12 +115,14 @@ public class EditDiary extends AppCompatActivity {
             diaryMood.setVisibility(View.GONE);
         }
 
+        // Change layout depending on type of diary
         if(textContent != null) {
             diaryContent.setText(textContent);
         }
         else {
             diaryContent.setVisibility(View.GONE);
         }
+
         if(image != null) {
             String imageChanged = image;
             Drawable setImage = Drawable.createFromPath(imageChanged);
