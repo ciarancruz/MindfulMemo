@@ -185,15 +185,12 @@ public class RecordingDiary extends AppCompatActivity {
                 // Handle the case when stop fails
                 stopException.printStackTrace();
             }
-            String filePath = "/storage/emulated/0/Android/data/com.example.mymemo/cache/recorded_audio.mp3";
-
-            playAudio(filePath);
+            playAudio(outputFile);
             // Release resources
             mediaRecorder.reset();
             mediaRecorder.release();
             mediaRecorder = null;
             Toast.makeText(this, "Recording stopped", Toast.LENGTH_SHORT).show();
-            verifyRecording();
             handler.removeCallbacks(timerRunnable);
         }
     }
@@ -219,26 +216,6 @@ public class RecordingDiary extends AppCompatActivity {
             });
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void verifyRecording() {
-        boolean isSaved = isRecordingSaved(outputFile);
-        if (isSaved) {
-            Log.d("AudioRecord", "Recording saved successfully.");
-        } else {
-            Log.d("AudioRecord", "Recording not saved properly.");
-        }
-    }
-
-    private boolean isRecordingSaved(String filePath) {
-        File file = new File(filePath);
-
-        if (file.exists() && file.isFile()) {
-            long fileSize = file.length();
-            return fileSize > 0; // Check if the file size is greater than 0
-        } else {
-            return false;
         }
     }
 }
