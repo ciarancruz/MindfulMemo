@@ -11,6 +11,6 @@
         android:icon="@drawable/diary_book"/>
     <item
         android:id="@+id/calender"
-        android:title="@string/calender"
+        android:title="@string/calendar"
         android:icon="@drawable/baseline_calendar_today"/>
 </menu>

@@ -54,17 +54,30 @@
         android:contentDescription="@string/back_btn" />
 
     <ImageView
-        android:id="@+id/takePicture"
-        android:layout_width="204dp"
-        android:layout_height="123dp"
-        android:src="@drawable/camera"
+        android:id="@+id/imageView"
+        android:layout_width="156dp"
+        android:layout_height="88dp"
         android:onClick="pickPhoto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/takePicture"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:contentDescription="@string/camera" />
+        app:layout_constraintVertical_bias="0.998"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <ImageView
+        android:id="@+id/takePicture"
+        android:layout_width="175dp"
+        android:layout_height="89dp"
+        android:layout_marginEnd="116dp"
+        android:contentDescription="@string/camera"
+        android:onClick="takePhoto"
+        android:src="@drawable/camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/saveButton"

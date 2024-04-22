@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mymemo.diaryscreens.Mood;
 import com.example.mymemo.diaryscreens.MyDiaryMain;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -41,8 +42,6 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
                 return true;
             } else if (itemId == R.id.allDiary) {
                 Intent intent = new Intent(this, MyDiaryMain.class);
@@ -102,23 +101,28 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void navigatetoDiary(){
-        Intent intent = new Intent(this, MyDiaryMain.class);
+        Intent intent = new Intent(this, Mood.class);
         intent.putExtra("user", user.getUser_id());
+        intent.putExtra("page", 0);
         startActivity(intent);
         finish();
 
     }
 
     public void navMic(){
-        Intent intent = new Intent(this, RecordingDiary.class);
+        Intent intent = new Intent(this, Mood.class);
         intent.putExtra("user", user.getUser_id());
+        intent.putExtra("page", 1);
         startActivity(intent);
+        finish();
     }
 
     public void navPic(){
-        Intent intent = new Intent(this, PictureDiary.class);
+        Intent intent = new Intent(this, Mood.class);
         intent.putExtra("user", user.getUser_id());
+        intent.putExtra("page", 2);
         startActivity(intent);
+        finish();
     }
 
 

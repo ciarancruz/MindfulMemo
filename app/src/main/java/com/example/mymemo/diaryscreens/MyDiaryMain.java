@@ -26,7 +26,9 @@ import com.example.mymemo.AppDatabase;
 import com.example.mymemo.User;
 import com.example.mymemo.ViewModal;
 import com.example.mymemo.HomeActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +38,8 @@ public class MyDiaryMain extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AppDatabase db;
     private ViewModal viewModal;
-    private final String TAG = "Debug";
     private SearchView searchView;
+    private final String TAG = "Debug";
 
     // User Model
     private int user_ID;
@@ -46,28 +48,6 @@ public class MyDiaryMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
 
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
-//        bottomNavigationView.setSelectedItemId(R.id.allDiary);
-//
-//
-//        bottomNavigationView.setOnItemSelectedListener(item -> {
-//            int itemId = item.getItemId();
-//            if (itemId == R.id.home) {
-//                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-//                finish();
-//                return true;
-//            } else if (itemId == R.id.allDiary) {
-//                return true;
-//            } else if (itemId == R.id.calender) {
-//                startActivity(new Intent(getApplicationContext(), Calendar.class));
-//                finish();
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        });
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
-        bottomNavigationView.setSelectedItemId(R.id.allDiary);
         searchView = findViewById(R.id.search);
         @SuppressLint("RestrictedApi") SearchView.SearchAutoComplete searchAutoComplete = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
 
@@ -87,22 +67,6 @@ public class MyDiaryMain extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.allDiary) {
-                return true;
-            } else if (itemId == R.id.calender) {
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
-                finish();
-                return true;
-            } else {
-                return false;
-            }
-        });
 
         // Instantiate database
         db = Room.databaseBuilder(this, AppDatabase.class, "APP_DB")
@@ -150,6 +114,18 @@ public class MyDiaryMain extends AppCompatActivity {
 
                 // Delete item from the database
                 db.diaryEntryDao().deleteDiaryEntry(deletedDiary);
+
+                // Delete file from folder
+                if (deletedDiary.getImage() != null){
+                    File imageFile = new File(deletedDiary.getImage());
+                    Log.d(TAG, "Image is " + deletedDiary.getImage());
+                    boolean deleted = imageFile.delete();
+                    if (deleted) {
+                        Log.d(TAG, "Deleted image successfully ");
+                    } else {
+                        Log.d(TAG, "Failed to delete image ");
+                    }
+                }
                 Toast.makeText(MyDiaryMain.this, "Diary deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
@@ -164,23 +140,10 @@ public class MyDiaryMain extends AppCompatActivity {
                 intent.putExtra("diaryText", diary.getText_content());
                 intent.putExtra("diaryRecording", diary.getAudio());
                 intent.putExtra("diaryImage", diary.getImage());
+                intent.putExtra("diaryMood", diary.getMood());
                 startActivity(intent);
                 finish();
             }
-
-//            @Override
-//            public void onItemClick(RecipeModel model) {
-//                // Passing data to new edit activity
-//                Intent intent = new Intent(MainActivity.this, EditRecipeActivity.class);
-//                intent.putExtra(AddRecipeActivity.EXTRA_ID, model.getId());
-//                intent.putExtra(AddRecipeActivity.EXTRA_RECIPE_NAME, model.getRecipeName());
-//                intent.putExtra(AddRecipeActivity.EXTRA_DESCRIPTION, model.getDescription());
-//                intent.putExtra(AddRecipeActivity.EXTRA_INGREDIENTS, model.getIngredients());
-//                intent.putExtra(AddRecipeActivity.EXTRA_INSTRUCTIONS, model.getInstructions());
-//                intent.putExtra(AddRecipeActivity.EXTRA_IMAGELINK, model.getImageLink());
-//
-//                editRecipeLauncher.launch(intent);
-//            }
         });
     }
 
@@ -232,35 +195,10 @@ public class MyDiaryMain extends AppCompatActivity {
     public void navigateMood(View view) {
         Intent intent = new Intent(this, Mood.class);
         intent.putExtra("user", user.getUser_id());
+        intent.putExtra("page", 0);
         startActivity(intent);
+        finish();
     }
 }
-
-
-
-
-
-
-    //public void showPopupMenu(View view) {
-        //PopupMenu popupMenu = new PopupMenu(this, view);
-        //popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            //@Override
-            //public boolean onMenuItemClick(MenuItem item) {
-                //switch (item.getItemId()) {
-                    //case R.id.action_edit:
-                        // Handle Edit action
-                        //return true;
-                    //case R.id.action_delete:
-                        // Handle Delete action
-                        //return true;
-                    // Add cases for other menu items if needed
-                    //default:
-                        //return false;
-                //}
-            //}
-        //});
-        //popupMenu.inflate(R.menu.dropdown_diary);
-        //popupMenu.show();
-    //}
 
 

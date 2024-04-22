@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class RecordingDiary extends AppCompatActivity {
     private Handler handler;
     private Runnable timerRunnable;
     private long startTimeMillis;
+    private int mood;
+    private EditText recordingTitle;
 
 
     @Override
@@ -53,6 +56,7 @@ public class RecordingDiary extends AppCompatActivity {
         pauseBtn = findViewById(R.id.pause_btn);
         backBtn = findViewById(R.id.backbtn1);
         timer = findViewById(R.id.recording_time);
+        recordingTitle = findViewById(R.id.recording_title_edittext);
 
         recordMic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +68,7 @@ public class RecordingDiary extends AppCompatActivity {
                         ActivityCompat.requestPermissions(RecordingDiary.this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
                     }
                     else {
-                        startRecording("recorded_audio.mp3");
+                        startRecording();
                         isRecording = true;
                     }
                 } else {
@@ -100,14 +104,18 @@ public class RecordingDiary extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RecordingDiary.this, HomeActivity.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
             }
         });
 
+        Intent intent = getIntent();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Intent intent = getIntent();
+
                 int userID = intent.getIntExtra("user",-1);
                 user = AppDatabase.getInstance(getApplicationContext())
                         .userDao()
@@ -115,6 +123,8 @@ public class RecordingDiary extends AppCompatActivity {
             }
         });
         thread.start();
+
+        mood = intent.getIntExtra("mood", -1);
 
         handler = new Handler();
         timerRunnable = new Runnable() {
@@ -133,12 +143,12 @@ public class RecordingDiary extends AppCompatActivity {
         };
     }
 
-    private void startRecording(String fileName) {
-        outputFile = getExternalCacheDir().getAbsolutePath();
-        outputFile += "/" + fileName;
+    private void startRecording() {
+        String fileName = "Recording_" + System.currentTimeMillis() + ".mp3";
+        outputFile = getExternalCacheDir().getAbsolutePath() + "/" + fileName;
 
         long currentTimeMillis = System.currentTimeMillis();
-        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, "Audio Recording", null, null, outputFile, user.getUser_id());
+        DiaryEntry newDiary = new DiaryEntry(currentTimeMillis, recordingTitle.getText().toString(), null, null, outputFile, mood, user.getUser_id());
         db.diaryEntryDao().insertDiaryEntry(newDiary);
 
         mediaRecorder = new MediaRecorder();
@@ -175,15 +185,12 @@ public class RecordingDiary extends AppCompatActivity {
                 // Handle the case when stop fails
                 stopException.printStackTrace();
             }
-            String filePath = "/storage/emulated/0/Android/data/com.example.mymemo/cache/recorded_audio.mp3";
-
-            playAudio(filePath);
+            playAudio(outputFile);
             // Release resources
             mediaRecorder.reset();
             mediaRecorder.release();
             mediaRecorder = null;
             Toast.makeText(this, "Recording stopped", Toast.LENGTH_SHORT).show();
-            verifyRecording();
             handler.removeCallbacks(timerRunnable);
         }
     }
@@ -209,26 +216,6 @@ public class RecordingDiary extends AppCompatActivity {
             });
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void verifyRecording() {
-        boolean isSaved = isRecordingSaved(outputFile);
-        if (isSaved) {
-            Log.d("AudioRecord", "Recording saved successfully.");
-        } else {
-            Log.d("AudioRecord", "Recording not saved properly.");
-        }
-    }
-
-    private boolean isRecordingSaved(String filePath) {
-        File file = new File(filePath);
-
-        if (file.exists() && file.isFile()) {
-            long fileSize = file.length();
-            return fileSize > 0; // Check if the file size is greater than 0
-        } else {
-            return false;
         }
     }
 }

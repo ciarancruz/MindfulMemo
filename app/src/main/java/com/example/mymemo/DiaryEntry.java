@@ -38,6 +38,8 @@ public class DiaryEntry {
 
     String image;
 
+    int mood;
+
     int user_id;
 
 
@@ -49,12 +51,13 @@ public class DiaryEntry {
     }
 
     @Ignore
-    public DiaryEntry(@NonNull Long date, String title, String text_content, String image, String audio, int user_id) {
+    public DiaryEntry(@NonNull Long date, String title, String text_content, String image, String audio, int mood, int user_id) {
         this.date = date;
         this.title = title;
         this.text_content = text_content;
         this.image = image;
         this.audio = audio;
+        this.mood = mood;
         this.user_id = user_id;
     }
     @Ignore
@@ -105,5 +108,19 @@ public class DiaryEntry {
         this.image = image;
     }
 
+    public int getMood() {
+        return mood;
+    }
 
+    public void setMood(int mood) {
+        this.mood = mood;
+    }
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
 }

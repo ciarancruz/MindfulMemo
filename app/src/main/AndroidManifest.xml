@@ -42,6 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".diaryscreens.MyDiaryMain"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false"/>
         <activity
             android:name=".diaryscreens.Mood"
