@@ -28,6 +28,7 @@ import com.example.mymemo.ViewModal;
 import com.example.mymemo.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class MyDiaryMain extends AppCompatActivity {
     private AppDatabase db;
     private ViewModal viewModal;
     private SearchView searchView;
+    private final String TAG = "Debug";
 
     // User Model
     private int user_ID;
@@ -112,6 +114,18 @@ public class MyDiaryMain extends AppCompatActivity {
 
                 // Delete item from the database
                 db.diaryEntryDao().deleteDiaryEntry(deletedDiary);
+
+                // Delete file from folder
+                if (deletedDiary.getImage() != null){
+                    File imageFile = new File(deletedDiary.getImage());
+                    Log.d(TAG, "Image is " + deletedDiary.getImage());
+                    boolean deleted = imageFile.delete();
+                    if (deleted) {
+                        Log.d(TAG, "Deleted image successfully ");
+                    } else {
+                        Log.d(TAG, "Failed to delete image ");
+                    }
+                }
                 Toast.makeText(MyDiaryMain.this, "Diary deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
