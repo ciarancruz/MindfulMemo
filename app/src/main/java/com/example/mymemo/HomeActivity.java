@@ -50,7 +50,9 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.calender) {
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                Intent intent = new Intent(this, Calendar.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
                 return true;
             } else {

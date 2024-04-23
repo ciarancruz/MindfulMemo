@@ -21,6 +21,7 @@ public class Calendar extends AppCompatActivity {
     private CalendarView calendarView;
     private ListView entryListView;
     private TextView noEntriesTextView;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +31,38 @@ public class Calendar extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
         bottomNavigationView.setSelectedItemId(R.id.calender);
 
+        // Get user id
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+
+            }
+        });
+        thread.start();
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
                 return true;
             } else if (itemId == R.id.allDiary) {
-                startActivity(new Intent(getApplicationContext(), MyDiaryMain.class));
+                Intent intent = new Intent(this, MyDiaryMain.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
                 finish();
                 return true;
             } else if (itemId == R.id.calender) {
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
-                finish();
                 return true;
-            } else {
+            }
+            else {
                 return false;
             }
         });
