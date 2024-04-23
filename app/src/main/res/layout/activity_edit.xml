@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:text="Edit"
+        android:text="View"
         android:textColor="#000000"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -35,44 +35,11 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/diaryicon" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/box_first"-->
-<!--        android:layout_width="389dp"-->
-<!--        android:layout_height="169dp"-->
-<!--        android:background="@drawable/box"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.186" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/box_second"-->
-<!--        android:layout_width="389dp"-->
-<!--        android:layout_height="169dp"-->
-<!--        android:background="@drawable/box"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.519" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/box_third"-->
-<!--        android:layout_width="389dp"-->
-<!--        android:layout_height="169dp"-->
-<!--        android:background="@drawable/box"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.852" />-->
-
     <Button
         android:id="@+id/cancel_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CANCEL"
+        android:text="GO BACK"
         android:background="@drawable/btn_bg"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -84,69 +51,6 @@
         app:layout_constraintVertical_bias="0.991"
         android:onClick="navigateToDiary"/>
 
-    <Button
-        android:id="@+id/save_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_bg"
-        android:text="SAVE"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:onClick="navigateToHome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.981"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
-<!--    <TextView-->
-<!--        android:id="@+id/text_edit"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="casual"-->
-<!--        android:text="@string/text_eds"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.106"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.178" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/record_edit"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="casual"-->
-<!--        android:text="@string/record_eds"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.111"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.456" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/picture_edit"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="casual"-->
-<!--        android:text="@string/picture_eds"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.113"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.72" />-->
 
     <TextView
         android:id="@+id/titleView"
@@ -175,7 +79,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/save_edit"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleView">

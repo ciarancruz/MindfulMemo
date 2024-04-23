@@ -23,20 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
-    <EditText
-        android:id="@+id/titleEditText"
-        android:layout_width="210dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:hint="@string/diary_title"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/save_text"
@@ -69,19 +56,53 @@
         app:layout_constraintVertical_bias="0.991"
         android:onClick="backToHome"/>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/typetext"
-        android:layout_width="367dp"
+<!--    <com.google.android.material.textfield.TextInputEditText-->
+<!--        android:id="@+id/typetext"-->
+<!--        android:layout_width="367dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Type text here..."-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.237" />-->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Type text here..."
-        android:inputType="textMultiLine"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237" />
+        app:layout_constraintTop_toBottomOf="@+id/newentry">
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="210dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:autofillHints=""
+            android:hint="@string/diary_title"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/typetext"
+            android:layout_below="@id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="Diary Content" />
+    </RelativeLayout>
+
+
+    
 
 </androidx.constraintlayout.widget.ConstraintLayout>
