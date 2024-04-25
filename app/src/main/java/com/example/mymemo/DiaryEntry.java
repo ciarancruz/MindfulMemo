@@ -3,6 +3,7 @@ package com.example.mymemo;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.Insert;
 import androidx.room.PrimaryKey;
@@ -23,44 +24,48 @@ import java.util.Date;
         indices = {@Index("user_id")}
 )
 public class DiaryEntry {
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
     int entry_id;
 
-    @NonNull
     @TypeConverters(DateConverter.class)
     Long date;
 
-    @NonNull
     String title;
 
-    @NonNull
     String text_content;
 
-    @NonNull
-    String entry_password;
+    String audio;
 
-    @NonNull
-    String video;
+    String image;
 
-    @NonNull
-    double lon;
+    int mood;
 
-    @NonNull
-    double lat;
-
-    @NonNull
     int user_id;
 
-    public DiaryEntry(int entry_id,@NonNull Long date, @NonNull String title, @NonNull String text_content, @NonNull String entry_password, @NonNull String video, double lon, double lat) {
-        this.entry_id = entry_id;
+
+    public DiaryEntry(@NonNull Long date, String title, String text_content, int user_id) {
         this.date = date;
         this.title = title;
         this.text_content = text_content;
-        this.entry_password = entry_password;
-        this.video = video;
-        this.lon = lon;
-        this.lat = lat;
+        this.user_id = user_id;
+    }
+
+    @Ignore
+    public DiaryEntry(@NonNull Long date, String title, String text_content, String image, String audio, int mood, int user_id) {
+        this.date = date;
+        this.title = title;
+        this.text_content = text_content;
+        this.image = image;
+        this.audio = audio;
+        this.mood = mood;
+        this.user_id = user_id;
+    }
+    @Ignore
+    public DiaryEntry(@NonNull Long date, String text_content, int user_id)
+    {
+        this.date = date;
+        this.text_content = text_content;
+        this.user_id = user_id;
     }
 
     public int getEntry_id() {
@@ -71,55 +76,51 @@ public class DiaryEntry {
         this.entry_id = entry_id;
     }
 
-    @NonNull
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(@NonNull String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    @NonNull
     public String getText_content() {
         return text_content;
     }
 
-    public void setText_content(@NonNull String text_content) {
+    public void setText_content(String text_content) {
         this.text_content = text_content;
     }
 
-    @NonNull
-    public String getEntry_password() {
-        return entry_password;
+    public String getAudio() {
+        return audio;
     }
 
-    public void setEntry_password(@NonNull String entry_password) {
-        this.entry_password = entry_password;
+    public void setAudio(String audio) {
+        this.audio = audio;
     }
 
-    @NonNull
-    public String getVideo() {
-        return video;
+    public String getImage() {
+        return image;
     }
 
-    public void setVideo(@NonNull String video) {
-        this.video = video;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public double getLon() {
-        return lon;
+    public int getMood() {
+        return mood;
     }
 
-    public void setLon(double lon) {
-        this.lon = lon;
+    public void setMood(int mood) {
+        this.mood = mood;
     }
 
-    public double getLat() {
-        return lat;
+    public Long getDate() {
+        return date;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setDate(Long date) {
+        this.date = date;
     }
 }

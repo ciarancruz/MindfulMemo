@@ -1,7 +1,5 @@
 package com.example.mymemo;
 
-import com.example.mymemo.categoryscreens.CategoryActivity;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,9 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.Locale;
-
-import com.example.mymemo.categoryscreens.CategoryActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -29,19 +24,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
-    //when user clicks on register link it should lead to register page.
-    public void navigatetoRegister(View view) {
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
-    }
-
-    // when user clicks on back button it leads them to the main page
-    public void navigatetoMain(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
-        initializeViews();
+        buttonLogin = findViewById(R.id.Loginbutton);
 
         // Login button
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +34,26 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        initializeViews();
+    }
+
+
+    //when user clicks on register link it should lead to register page.
+    public void navigatetoRegister(View view) {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
+        finish();
+    }
+
+   // when user clicks on back button it leads them to the main page
+   public void navigatetoMain(){
+            Intent intent = new Intent(this, MainActivity.class);
+           startActivity(intent);
     }
 
     private void initializeViews() {
-        editTextEmail = findViewById(R.id.EmailAddress);
-        editTextPassword = findViewById(R.id.Password);
+        editTextEmail = findViewById(R.id.EmailAddressText);
+        editTextPassword = findViewById(R.id.PasswordText);
         buttonLogin = findViewById(R.id.Loginbutton);
     }
 
@@ -70,6 +68,7 @@ public class Login extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 // If there is a match in the database
                 if (AppDatabase.getInstance(getApplicationContext())
                         .userDao()
@@ -78,14 +77,29 @@ public class Login extends AppCompatActivity {
                             .userDao()
                             .getUserByEmail(email);
                     Log.d(TAG, "run: " + user.getF_name());
-                    if (password.equalsIgnoreCase(user.getUser_password())) {
-                        Intent intent = new Intent(Login.this, CategoryActivity.class);
+
+                    // Check if password matches account
+                    if (password.equals(user.getUser_password())) {
+                        Intent intent = new Intent(Login.this, HomeActivity.class);
+                        intent.putExtra("user", user.getUser_id());
                         startActivity(intent);
                         finish();
                     }
+                    else {
+                        Login.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(Login.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
                 }
                 else {
-                    Log.d(TAG, "run: Could not find user!");
+                    Login.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(Login.this, "Could not find user", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });

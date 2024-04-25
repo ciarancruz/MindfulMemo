@@ -8,7 +8,7 @@
     <string name="my_diary">My Diary</string>
     <string name="home">Home</string>
     <string name="add">Add</string>
-    <string name="calender">Calender</string>
+    <string name="calendar">Calendar</string>
     <string name="category">Category</string>
     <string name="gallery">Gallery</string>
     <string name="meetings">Meetings</string>
@@ -24,7 +24,37 @@
     <string name="hobbie_icon">hobbie_icon</string>
     <string name="mood_icon">mood_icon</string>
     <string name="back_btn">back_btn</string>
+    <string name="back_button_description">Back_button</string>
+    <string name="plus_add_btn">Plus_add</string>
+    <string name="heart_button">Heart_button</string>
+    <string name="threedots_description">Three_dots</string>
+    <string name="add_gallery">Add_gallery</string>
+    <string name="add_audio">Add_audio</string>
+    <string name="add_entry">Add_entry</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+    <string name="logo_image">logo_image</string>
+    <string name="add_btn">Add_btn</string>
+    <string name="imageview3">imageview3</string>
+    <string name="mic_btn">mic_btn</string>
+    <string name="record_diary">Record Diary</string>
+    <string name="picture_diary">Picture Diary</string>
+    <string name="new_recording">New Recording</string>
+    <string name="person_voice">person_voice</string>
+    <string name="recording_file_name">Recording File name</string>
+    <string name="add_pictures">Add Pictures</string>
+    <string name="save">Save</string>
+    <string name="camera">camera</string>
+    <string name="enter_picture_title">Enter picture title</string>
+    <string name="diary_title">Diary Title</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="all_diary">All Diary</string>
+    <string name="text_eds">Diary Title</string>
+    <string name="record_eds">Record Title</string>
+    <string name="picture_eds">Picture Title</string>
+    <string name="cancel_eds">CANCEL</string>
+    <string name="save_eds">SAVE</string>
+    <string name="moods">Mood</string>
 </resources>

@@ -5,4 +5,5 @@
     <color name="earthy_green">#7A9464</color>
     <color name="peach_beige">#FFEFDA</color>
     <color name="linkColor">#0000FF</color>
+    <color name="grey"> #808080</color>
 </resources>

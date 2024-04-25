@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- New permissions for accessing media files -->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" android:maxSdkVersion="33" />-->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" android:maxSdkVersion="33" />-->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" android:maxSdkVersion="33" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,32 +23,13 @@
         android:theme="@style/Theme.MyMemo"
         tools:targetApi="31">
         <activity
-            android:name=".categoryscreens.Moods"
+            android:name=".PictureDiary"
             android:exported="false" />
         <activity
-            android:name=".categoryscreens.Family"
-            android:exported="false" />
-
-        <activity
-            android:name="Calendar"
+            android:name=".RecordingDiary"
             android:exported="false" />
         <activity
-            android:name=".categoryscreens.Study"
-            android:exported="false" />
-        <activity
-            android:name=".Mood"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.Hobbies"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.Fitness"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.Meetings"
-            android:exported="false" />
-        <activity
-            android:name=".categoryscreens.CategoryActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Register"
@@ -48,12 +39,28 @@
             android:exported="false" />
         <activity
             android:name=".DiaryActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
-            android:name=".GalleryActivity"
-            android:exported="false"
-            />
+            android:name=".diaryscreens.MyDiaryMain"
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="false"/>
+        <activity
+            android:name=".diaryscreens.Mood"
+            android:exported="false" />
+        <activity
+            android:name=".diaryscreens.NewEntry"
+            android:exported="false" />
+        <activity
+            android:name=".diaryscreens.EditDiary"
+            android:exported="false" />
+        <activity android:name=".Calendar"
+            android:exported="false"/>
+
+
+<!--        <activity-->
+<!--            android:name=".galleryscreens.GalleryActivity"-->
+<!--            android:exported="false"-->
+<!--            />-->
 
         <activity
             android:name=".MainActivity"

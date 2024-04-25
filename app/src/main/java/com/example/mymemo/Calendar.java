@@ -1,35 +1,82 @@
 package com.example.mymemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mymemo.diaryscreens.MyDiaryMain;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Calendar extends AppCompatActivity {
-
     private CalendarView calendarView;
     private ListView entryListView;
     private TextView noEntriesTextView;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView);
+        bottomNavigationView.setSelectedItemId(R.id.calender);
+
+        // Get user id
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getIntent();
+                int userID = intent.getIntExtra("user",-1);
+                user = AppDatabase.getInstance(getApplicationContext())
+                        .userDao()
+                        .getUserById(userID);
+
+            }
+        });
+        thread.start();
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.allDiary) {
+                Intent intent = new Intent(this, MyDiaryMain.class);
+                intent.putExtra("user", user.getUser_id());
+                startActivity(intent);
+                finish();
+                return true;
+            } else if (itemId == R.id.calender) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+
         // Initialize views
         calendarView = findViewById(R.id.calendarView);
         entryListView = findViewById(R.id.entryListView);
-        //noEntriesTextView = findViewById(R.id.noEntriesTextView);
+        noEntriesTextView = findViewById(R.id.noEntriesTextView); // Initialize noEntriesTextView here
 
         // Hide the entry list initially
         entryListView.setVisibility(View.GONE);
+        if (noEntriesTextView != null) {
+            noEntriesTextView.setVisibility(View.GONE);
+        }
 
         // Set listener for calendar item click
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -47,8 +94,7 @@ public class Calendar extends AppCompatActivity {
 
         if (entries.isEmpty()) {
             // Show a message if there are no entries for the selected date
-            entryListView.setVisibility(View.GONE);
-            noEntriesTextView.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "No diaries found for selected date", Toast.LENGTH_SHORT).show();
         } else {
             // Display the entries in the ListView
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, entries);

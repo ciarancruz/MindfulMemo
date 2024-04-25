@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiaryActivity"
-    android:background="@color/peach_beige">
+    android:background="@color/peach_beige"
+    tools:context=".diaryscreens.MyDiaryMain">
 
     <TextView
         android:id="@+id/mydiary"
@@ -40,36 +40,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.122" />
 
-    <ImageView
-        android:id="@+id/plusadd"
-        android:layout_width="88dp"
-        android:layout_height="97dp"
-        android:onClick="navigatetoMood"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989"
-        app:srcCompat="@drawable/blackplus" />
 
-    <ImageView
-        android:id="@+id/backhome"
-        android:layout_width="97dp"
-        android:layout_height="97dp"
-        android:onClick="navigatetoCategory"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/search_bg"
+        android:focusable="false"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.988"
-        app:srcCompat="@drawable/backbut" />
+        app:layout_constraintTop_toBottomOf="@+id/diaryimage"
+        app:queryHint="Search.."
+        app:searchHintIcon="@null"
+        app:searchIcon="@drawable/baseline_search" />
 
     <ImageView
         android:id="@+id/diaryimage"
-        android:layout_width="134dp"
-        android:layout_height="92dp"
+        android:layout_width="123dp"
+        android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
@@ -78,18 +68,74 @@
         app:layout_constraintVertical_bias="0.032"
         app:srcCompat="@drawable/diaryicon" />
 
-    <TextView
-        android:id="@+id/placeholdertext"
-        android:layout_width="248dp"
-        android:layout_height="57dp"
-        android:text="No Entries Created."
-        android:textSize="18sp"
-        android:textStyle="bold"
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView10"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.922"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+<!--        app:srcCompat="@drawable/heart" -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="95dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNavView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/peach_beige"-->
+<!--        app:itemIconTint="@drawable/item_selector"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.997"-->
+<!--        app:menu="@menu/bottom_nav_menu"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="-46dp" />-->
+
+    <ImageButton
+        android:id="@+id/plusadd"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:backgroundTint="#FEEED9"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/plus_add_btn"
+        android:onClick="navigateMood"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.986"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.99"
+        app:srcCompat="@drawable/blackplus" />
+
+    <ImageButton
+        android:id="@+id/backbutton"
+        android:layout_width="105dp"
+        android:layout_height="87dp"
+        android:backgroundTint="#FEEED9"
+        android:scaleType="fitCenter"
+        android:onClick="navigateToHome"
+        android:contentDescription="@string/back_button_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/backbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
